@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* 计算正方形和圆形的宽度 */
+@mixin setSquareWidth($width) {
+	&.btn-circle,
+	&.btn-square {
+		width: changeUnit($width);
+	}
+}
+/* 计算有边框的行高 */
+@mixin setBorderLineHeight($height) {
+	@if $height == 'auto' {
+		line-height: 1em;
+	}
+	@else {
+		&.btn-border {
+			line-height: changeUnit($height - $btn-border-width * 2);
+		}
+
+		&.btn-border-thin {
+			line-height: changeUnit($height - $btn-border-thin-width * 2);
+		}
+
+		&.btn-border-thick {
+			line-height: changeUnit($height - $btn-border-thick-width * 2);
+		}
+	}
+}
+/* 设置3d按钮的shadow颜色值 */
+@mixin set3DColor($top, $shadow, $shadow2) {
+	@include boxShadow($shadow);
+	@at-root {
+		&.active,
+		&:active,
+		.btn-parent.active &,
+		.no-touch &:hover {
+			top: $top;
+			@include boxShadow($shadow2);
+		}
+	}
+}
+/* 创建自定义按钮class */
+/* 创建自定义按钮class */
+@mixin createBtnSize($class, $height, $paddingHorizontal, $paddingVertical: false) {
+	.btn-#{$class} {
+		height       : changeUnit($height);
+		line-height  : changeUnit($height);
+		padding-left : changeUnit($paddingHorizontal);
+		padding-right: changeUnit($paddingHorizontal);
+		@if $paddingVertical != false {
+			padding-top   : changeUnit($paddingVertical);
+			padding-bottom: changeUnit($paddingVertical);
+		}
+		@include setSquareWidth($height);
+		@include setBorderLineHeight($height);
+	}
+}
+/* 按钮颜色 */
+@mixin createBtnStyle($fontColor: false, $bgColor: false, $borderColor: false) {
+	@if $fontColor == false{
+		$fontColor: transparent, transparent;
+	}
+	@if $bgColor == false {
+		$bgColor: transparent, transparent;
+	}
+	@if $borderColor == false {
+		$borderColor: $bgColor;
+	}
+	color           : nth($fontColor, 1);
+	background-color: nth($bgColor, 1);
+	@at-root {
+		&.active,
+		&:active,
+		.btn-parent.active &,
+		.no-touch &:hover {
+			color           : nth($fontColor, 2);
+			background-color: nth($bgColor, 2);
+		}
+	}
+
+	&.btn-border,
+	&.btn-border-thick,
+	&.btn-border-thin {
+		border-color: nth($borderColor, 1);
+		@at-root {
+			&.active,
+			&:active,
+			.btn-parent.active &,
+			.no-touch &:hover {
+				border-color: nth($borderColor, 2);
+			}
+		}
+	}
+	@if (nth($bgColor, 1) == transparent) and (nth($bgColor, 2) == transparent) {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 1) == transparent {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 2) == transparent {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+}

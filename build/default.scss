@@ -1,0 +1,573 @@
+@charset "utf-8";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+figure {
+	margin:0;
+	padding:0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size:100%; font-weight:normal;
+}
+a,
+label,
+input,
+button,
+select,
+textarea {
+	outline:none
+}
+body,
+button,
+input,
+select,
+textarea {
+	word-wrap: break-word;
+}
+textarea {
+	resize:none;
+}
+address,
+cite,
+dfn,
+em,
+var {
+	font-style:normal
+}
+ul,
+ol {
+	list-style:none;
+}
+fieldset,
+img {
+	border: 0;
+	vertical-align:bottom;
+}
+section,
+article,
+aside,
+header,
+footer,
+nav,
+dialog,
+figure{
+	display:block;
+}
+table{
+	width:100%;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+* {
+	@include boxSizing();
+}
+*:after,
+*:before {
+	display:block;
+}
+*:focus {
+	outline:none;
+}
+.clear {
+	@extend %clear;
+}
+.clearfix:after {
+	@extend %clearfix;
+}
+
+html {
+	@include textSizeAdjust();
+}
+body {
+	margin:0 auto;
+	-webkit-font-smoothing: antialiased; // 让文字变得更清晰
+}
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	display: inline-block;
+}
+;@charset "utf-8";
+
+.wrapper {
+	width: $rp;
+	margin-left: auto;
+	margin-right: auto;
+}
+.show { display: block; }
+.hidden { display: none; }
+
+@include screen(0px, $bp-gt-max) {
+	.gt-hidden {
+		display: none;
+	}
+	.gt-show {
+		display: block;
+	}
+	.wrapper {
+		width: $rp-gt;
+	}
+}
+@include screen(0px, $bp-lg-max) {
+	.lg-hidden {
+		display: none;
+	}
+	.lg-show {
+		display: block;
+	}
+	.wrapper {
+		width: $rp-lg;
+	}
+}
+@include screen(0px, $bp-md-max) {
+	.md-hidden {
+		display: none;
+	}
+	.md-show {
+		display: block;
+	}
+	.wrapper {
+		width: $rp-md;
+		padding-left: $md-space;
+		padding-right: $md-space;
+	}
+}
+@include screen(0px, $bp-sm-max) {
+	.sm-hidden {
+		display: none;
+	}
+	.sm-show {
+		display: block;
+	}
+	.wrapper {
+		width: $rp-sm;
+		padding-left: $sm-space;
+		padding-right: $sm-space;
+	}
+}
+@include screen(0px, $bp-tn-max) {
+	.tn-hidden {
+		display: none;
+	}
+	.tn-show {
+		display: block;
+	}
+	.wrapper {
+		width: $rp-tn;
+		padding-left: $tn-space;
+		padding-right: $tn-space;
+	}
+}
+;@charset "utf-8";
+
+$scrollBoxBg: #cccccc !default;
+$scrollBarBg: #333333 !default;
+
+
+/* 谷歌 滚动条 */
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: none;
+	background-color: $scrollBoxBg;
+}
+/*---滚动框背景样式--*/
+::-webkit-scrollbar-track-piece{
+	background: rgba($scrollBarBg, 0.5);
+	-webkit-border-radius: 0;
+
+}
+/*---滚动条大小--*/
+::-webkit-scrollbar {
+	width: 10px;
+	background: rgba($scrollBarBg, 0.7);
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+	background: rgba($scrollBarBg, 0.7);
+}
+
+/*---鼠标点击滚动条显示样式--*/
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active{
+	background: $scrollBarBg;
+	height: changeUnit(50);
+	-webkit-border-radius: 0;
+}
+
+
+/* IE 滚动条 */
+html,
+body {
+	/* 滚动框背景 */
+	scrollbar-track-color: $scrollBoxBg;
+	/* 滚动条背景 */
+	scrollbar-face-color: nth($scrollBarBg, 1);
+	/* 滚动条阴影 */
+	scrollbar-shadow-color: nth($scrollBarBg, 1);
+	/* 上下箭头颜色 */
+	scrollbar-arrow-color: nth($scrollBarBg, 1);
+
+	scrollbar-highlight-color: #c00;
+	scrollbar-3dlight-color: #c00;
+	scrollbar-darkshadow-color: #fff;
+}
+;@charset "utf-8"; /**
+* <button class="button button-sm button-red button-3d">测试按钮</button>
+**/
+// 变量
+$button-rp-ht: 24 !default;
+$button-rp-pd: 10 !default;
+$button-sm-ht: 30 !default;
+$button-sm-pd: 15 !default;
+$button-md-ht: 40 !default;
+$button-md-pd: 20 !default;
+$button-lg-ht: 50 !default;
+$button-lg-pd: 25 !default;
+$button-gt-ht: 60 !default;
+$button-gt-pd: 30 !default;
+$button-border-width: 2 !default;
+$button-border-thin-width: 1 !default;
+$button-border-thick-width: 3 !default;
+
+/* 计算正方形和圆形的宽度 */
+@mixin setSquareWidth($width) {
+	&.button-circle,
+	&.button-square {
+		width: changeUnit($width);
+	}
+}
+/* 计算有边框的行高 */
+@mixin setBorderLineHeight($height) {
+	@if $height == 'auto' {
+		line-height: 1em;
+	}
+	@else {
+		&.button-border {
+			line-height: changeUnit($height - $button-border-width * 2);
+		}
+
+		&.button-border-thin {
+			line-height: changeUnit($height - $button-border-thin-width * 2);
+		}
+
+		&.button-border-thick {
+			line-height: changeUnit($height - $button-border-thick-width * 2);
+		}
+	}
+}
+/* 设置3d按钮的shadow颜色值 */
+@mixin set3DColor($top, $shadow, $shadow2) {
+	 @include boxShadow($shadow);
+	@at-root {
+		&.active,
+		&:active,
+		.button-parent.active &,
+		.no-touch &:hover {
+			top: $top;
+			@include boxShadow($shadow2);
+		}
+	}
+}
+/* 创建自定义按钮class */
+/* 创建自定义按钮class */
+@mixin createButtonSize($class, $height, $paddingHorizontal, $paddingVertical: false) {
+	.button-#{$class} {
+		height       : changeUnit($height);
+		line-height  : changeUnit($height);
+		padding-left : changeUnit($paddingHorizontal);
+		padding-right: changeUnit($paddingHorizontal);
+		@if $paddingVertical != false {
+			padding-top   : changeUnit($paddingVertical);
+			padding-bottom: changeUnit($paddingVertical);
+		}
+		@include setSquareWidth($height);
+		@include setBorderLineHeight($height);
+	}
+}
+/* 按钮颜色 */
+@mixin createButtonStyle($fontColor: false, $bgColor: false, $borderColor: false) {
+	 @if $fontColor == false{
+		$fontColor: transparent, transparent;
+	}
+	@if $bgColor == false {
+		$bgColor: transparent, transparent;
+	}
+	@if $borderColor == false {
+		$borderColor: $bgColor;
+	}
+	color           : nth($fontColor, 1);
+	background-color: nth($bgColor, 1);
+	@at-root {
+		&.active,
+		&:active,
+		.button-parent.active &,
+		.no-touch &:hover {
+			color           : nth($fontColor, 2);
+			background-color: nth($bgColor, 2);
+		}
+	}
+
+	&.button-border,
+	&.button-border-thick,
+	&.button-border-thin {
+		border-color: nth($borderColor, 1);
+		@at-root {
+			&.active,
+			&:active,
+			.button-parent.active &,
+			.no-touch &:hover {
+				border-color: nth($borderColor, 2);
+			}
+		}
+	}
+	@if (nth($bgColor, 1) == transparent) & & (nth($bgColor, 2) == transparent) {
+		&.button-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 1) == transparent {
+		&.button-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 2) == transparent {
+		&.button-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else {
+		&.button-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+}
+/**
+* 按钮默认设置
+**/
+
+.button {
+	display        : inline-block;
+	text-align     : center;
+	text-decoration: none;
+	border         : none;
+	overflow       : hidden;
+	cursor         : pointer;
+	@include transition(all 0.3s);
+}
+
+button.button,
+button.input {
+	@include appearance;
+}
+/**
+* 按钮形状 默认方形
+**/
+/* 正方形 */
+
+.button-square {
+	padding: 0 !important;
+}
+/* 圆形 */
+
+.button-circle {
+	border-radius: 50%;
+	padding      : 0 !important;
+}
+/* 圆角 */
+
+.button-rounded {
+	border-radius: changeUnit(4);
+}
+/* 大圆角 */
+
+.button-rounded-lg {
+	border-radius: changeUnit(10);
+}
+/* 药丸 */
+
+.button-pill {
+	border-radius: changeUnit(10000);
+}
+/**
+* 按钮边框
+**/
+/* 圆形 */
+
+.button-border,
+.button-border-thick,
+.button-border-thin {
+	border-style: solid;
+}
+/* 默认的 */
+
+.button-border {
+	border-width: changeUnit($button-border-width);
+}
+/* 细的 */
+
+.button-border-thin {
+	border-width: changeUnit($button-border-thin-width);
+}
+/* 粗的 */
+
+.button-border-thick {
+	border-radius: changeUnit($button-border-thick-width);
+}
+/**
+* 3D按钮
+**/
+
+.button-3d {
+	position: relative;
+	top     : 0;
+	@include boxShadow(0 changeUnit(7) 0 #bbbbbb, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2));
+
+	&.active,
+	&:active {
+		top: changeUnit(5);
+		@include transition(all 0.15s);
+		@include boxShadow(0 changeUnit(2) 0 #bbbbbb, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2));
+	}
+}
+;@charset "utf-8";
+/**
+	<label class="f-cr-label f-cr-base f-cr-style-1 f-cr-rounded clearfix">
+		<input type="checkbox" class="f-cr" />
+		<div class="f-cr-content">
+			<span class="f-cr-icon"><i class="checked"></i></span>
+			<span class="f-cr-name">TVB香港翡翠电视台</span>
+		</div>
+	</label>
+**/
+
+.f-cr-base {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	.f-cr-icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		cursor: pointer;
+		.checked {
+			display: none;
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+		.fa {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+	}
+	.f-cr {
+		display: none;
+		&:checked {
+			& + .f-cr-icon {
+				.fa,
+				.checked {
+					display: block;
+				}
+			}
+		}
+	}
+}
+/**
+* checkbox radio 圆角大小
+**/
+.f-cr-rounded {
+	.f-cr-icon {
+		border-radius: changeUnit(4);
+		.checked {
+			border-radius: changeUnit(4);
+		}
+	}
+}
+.f-cr-circle {
+	.f-cr-icon {
+		border-radius: 50%;
+		.checked {
+			border-radius: 50%;
+		}
+	}
+}
+;@charset "utf-8";
+
+html {
+	width:100%;
+	height:100%;
+	font-size: 100px;
+}
+body,
+button,
+input,
+select,
+textarea {
+	font-family: $default-ff;
+	@include fontSize($default-fs);
+}
+body {
+	color: nth($color, 2);
+	background: nth($color, 1);
+	overflow-x: hidden;
+}
+a,
+a:hover {
+	color: inherit;
+	text-decoration: none;
+}
+
+// 自定义的table，与colspan和rowspan无效
+.table {
+	display: table;
+	.thead {
+		display: table-caption;
+	}
+	.tbody {
+		display: table-row-group;
+	}
+	.tr {
+		display: table-row;
+	}
+	.th,
+	.td {
+		display: table-cell;
+		vertical-align: inherit;
+	}
+}

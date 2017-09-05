@@ -1,0 +1,90 @@
+@charset 'utf-8';
+// @include createBtnSize(name, height, pd-horizontal, pd-vertical(可省略) ); 自定义按钮大小
+// @include createBtnStyle((fontColor, fontActiveColor), (bgColor, bgActiveColor), (borderColor, borderActiveColor), (可省略, 可省略)); 自定义按钮样式
+
+
+@include createBtnSize(h46, 46, 20);
+@include createBtnSize(h40, 40, 20);
+@include createBtnSize(h60, 60, 30);
+@include createBtnSize(h260, 260, 40);
+
+.btn-style-1 {
+	@include createBtnStyle(
+							($color-white, $color-white),
+							($color-9365F1, darken($color-9365F1, 6)),
+							($color-9365F1, darken($color-9365F1, 6))
+	)
+}
+.btn-style-2 {
+	@include createBtnStyle(
+							($color-white, $color-white),
+							($color-B63EFF, darken($color-B63EFF, 6)),
+							($color-B63EFF, darken($color-B63EFF, 6))
+	)
+}
+
+.btn-style-speical-1 {
+	position: relative;
+	@include createBtnStyle(
+				($color-white, $color-0F9CFF),
+				(transparent, transparent),
+				($color-white, $color-white)
+	);
+	span {
+		position: relative;
+		z-index: 3;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 100%;
+		top: 0;
+		bottom: 0;
+		background-color: $color-white;
+		@include transition(all 0.4s $easing-1);
+	}
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			&:before {
+				right: 0;
+			}
+		}
+	}
+}
+.btn-style-speical-2 {
+	position: relative;
+	padding-right: changeUnit(50);
+	@include transition(all 0.4s $easing-1);
+	@include createBtnStyle(
+				($color-white, $color-white),
+				($color-8f5ff0, darken($color-8f5ff0, 6)),
+				($color-8f5ff0, darken($color-8f5ff0, 6))
+	);
+	span {
+		position: relative;
+		z-index: 3;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		width: changeUnit(50);
+		height: 1px;
+		margin-top: -0.5px;
+		background-color: $color-white;
+		@include transition(all 0.4s $easing-1);
+	}
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			padding-right: changeUnit(25);
+			padding-left: changeUnit(25);
+			&:before {
+				width: 0;
+			}
+		}
+	}
+}

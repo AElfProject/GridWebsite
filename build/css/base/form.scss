@@ -1,0 +1,67 @@
+
+// 表单样式
+/**
+	<label class="f-cr-label f-cr-base f-cr-style-1 f-cr-rounded clearfix">
+		<input type="checkbox" class="f-cr" />
+		<div class="f-cr-content">
+			<span class="f-cr-icon"><i class="checked"></i></span>
+			<span class="f-cr-name">TVB香港翡翠电视台</span>
+		</div>
+	</label>
+**/
+.f-cr-base {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	.f-cr-icon {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		cursor: pointer;
+		.checked {
+			display: none;
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+		.fa {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+	}
+	.f-cr {
+		display: none;
+		&:checked {
+			& + .f-cr-icon {
+				.fa,
+				.checked {
+					display: block;
+				}
+			}
+		}
+	}
+}
+/**
+* checkbox radio 圆角大小
+**/
+.f-cr-rounded {
+	.f-cr-icon {
+		border-radius: changeUnit(4);
+		.checked {
+			border-radius: changeUnit(4);
+		}
+	}
+}
+.f-cr-circle {
+	.f-cr-icon {
+		border-radius: 50%;
+		.checked {
+			border-radius: 50%;
+		}
+	}
+}

@@ -1,0 +1,154 @@
+@charset "utf-8";
+@media screen and (max-width: $bp-tn-max){
+
+}
+
+@media screen and (max-width: 767px){
+	.menu-btn {
+		height: changeUnit(20);
+		line-height: changeUnit(20);
+	}
+	.section-1 {
+		.scroll-down {
+			bottom: changeUnit(20);
+		}
+		.mb65 {
+			margin-bottom: changeUnit(30);
+		}
+	}
+	.section-2 {
+		.charts {
+			.info {
+				width: 200%;
+				p:nth-child(1) {
+					display: none;
+				}
+			}
+		}
+	}
+	.section-3 {
+		.h455 {
+			height: auto;
+		}
+		.pt45,
+		.pt70 {
+			padding-top: changeUnit(30);
+			padding-bottom: changeUnit(30);
+		}
+	}
+	.break {
+		.gcol-1 {
+			.mb40 {
+				margin-bottom: changeUnit(20);
+			}
+			.line-arrow {
+				display: none;
+			}
+		}
+	}
+	.section-4 {
+		.pt110 {
+			padding-top: 0;
+		}
+		.features-info {
+			height: auto;
+			background: none !important;
+			dl {
+				padding-top: changeUnit(20);
+			}
+		}
+	}
+	.section-5 {
+		.pt110 {
+			padding-top: 0;
+		}
+		.grow {
+			margin-bottom: changeUnit(30);
+		}
+		.mb45 {
+			margin-bottom: changeUnit(15);
+		}
+	}
+	.section-6 {
+		.time-slide {
+			.line-box2 {
+				display: none;
+			}
+			&:before {
+				@include opacity(1);
+			}
+			&.next,
+			&.prev {
+				&:before {
+					height: changeUnit(100) !important;
+				}
+				.btn {
+					top: changeUnit(100) !important;
+					margin-top: 0 !important;
+				}
+			}
+			&.next-value,
+			&.prev-value {
+				&:before {
+					height: changeUnit(140) !important;
+				}
+				.btn {
+					top: changeUnit(140) !important;
+					margin-top: 0 !important;
+				}
+			}
+			&.cur-value {
+				&:before {
+					height: changeUnit(220) !important;
+				}
+				.btn {
+					top: changeUnit(220) !important;
+					margin-top: 0 !important;
+				}
+			}
+		}
+	}
+	.section-7 {
+		.pt205 {
+			padding-top: changeUnit(30);
+		}
+		.h655 {
+			height: changeUnit(312);
+		}
+		.mb95 {
+			margin-bottom: changeUnit(50);
+		}
+	}
+	.section-10 {
+		.cont {
+			padding-top: changeUnit(30);
+			padding-bottom: changeUnit(30);
+		}
+		.gcol-ol-1 {
+			margin-bottom: changeUnit(30);
+		}
+	}
+	.team {
+		.team-pic {
+			width: changeUnit(100);
+			height: changeUnit(100);
+		}
+		.team-txt {
+			padding-left: changeUnit(10);
+			padding-right: changeUnit(10);
+		}
+	}
+	.times-style-1 {
+		li {
+			height: changeUnit(72);
+			margin-right: changeUnit(15);
+		}
+	}
+	.footer {
+		padding-top: changeUnit(20);
+		padding-bottom: changeUnit(20);
+		.mb65 {
+			margin-bottom: changeUnit(20);
+		}
+	}
+}

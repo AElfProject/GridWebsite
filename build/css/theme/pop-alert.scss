@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/************************************************************************************************
+* 选择弹窗
+**/
+
+.theme-default-alert-pop-mask,
+.theme-default-alert-pop-close,
+.theme-default-alert-pop {
+	position: fixed;
+}
+.theme-default-alert-pop-mask {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	background-color: rgba($color-black, 0.9);
+}
+.theme-default-alert-pop-close {
+	top: 0;
+	right: 0;
+	z-index: 100;
+	.close {
+		position: relative;
+		display: block;
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 80%;
+			height: 2px;
+			background-color: $color-white;
+			&:nth-child(1) {
+				@include transform(translate(-50%, -50%) rotate(45deg));
+			}
+			&:nth-child(2) {
+				@include transform(translate(-50%, -50%) rotate(-45deg));
+			}
+		}
+	}
+}
+.theme-default-alert-pop {
+	top: 50%;
+	left: 50%;
+	z-index: 101;
+	width: 500px;
+	border-radius: 10px;
+	border: 1px solid $color-dark;
+	background-color: $color-white;
+	text-align: center;
+	overflow: hidden;
+	@include translate(-50%, -50%);
+	.alert-pop-title {
+		padding: 10px 20px;
+		background-color: $color-lighter;
+	}
+	.alert-pop-content {
+		padding: 25px 20px;
+	}
+	.alert-pop-btns {
+		> * {
+			float: left;
+			text-align: center;
+		}
+	}
+}

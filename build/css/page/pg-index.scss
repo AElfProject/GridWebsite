@@ -1,0 +1,307 @@
+@charset "utf-8";
+
+.section {
+	position: relative;
+	.lines {
+		z-index: 1;
+	}
+	.cont {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.section-1 {
+	background-color: $color-0F9CFF;
+	.cont {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.earth {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-size: auto;
+		background-position: center;
+	}
+	.txt {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		@include translate(0, -50%);
+	}
+	.btns {
+		.btn {
+			display: block;
+		}
+	}
+	.scroll-down {
+		position: absolute;
+		bottom: changeUnit(100);
+		left: 50%;
+		@include translate(-50%, 0);
+		&:before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			bottom: 100%;
+			width: 1px;
+			height: changeUnit(40);
+			margin-left: -0.5px;
+			margin-bottom: changeUnit(10);
+			background-color: $color-white;
+		}
+	}
+}
+
+.section-2 {
+	background-color: $color-white;
+	.lines {
+		z-index: 2;
+	}
+	.charts {
+		z-index: 1;
+		background-size: 102% auto;
+		background-position: center bottom;
+		.num {
+			position: absolute;
+			left: 0;
+			padding-left: changeUnit(25);
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 1px;
+				height: changeUnit(15);
+				background-color: $color-8f5ff0;
+				@include translate(0, -50%);
+			}
+			&:after {
+				@include transform(translate(0, -50%) rotate(90deg));
+			}
+			&.s1 {
+				bottom: 40%;
+			}
+			&.s2 {
+				bottom: 65%;
+			}
+			&.s3 {
+				bottom: 85%;
+			}
+		}
+		.info {
+			position: absolute;
+			left: 0;
+			bottom: changeUnit(85);
+			@include translate(-50%, 0);
+		}
+	}
+	.btns {
+		.btn {
+			display: block;
+		}
+	}
+}
+
+.section-3 {}
+
+
+.section-4 {
+	.features-info {
+		position: relative;
+		background-size: auto;
+		background-position: center;
+	}
+}
+
+.section-5 {
+	position: relative;
+	overflow: hidden;
+	.circles {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		div {
+			position: absolute;
+			&.c1 {
+				width: 40%;
+				left: 0;
+				top: 0;
+				@include translate(-40%, -30%);
+			}
+			&.c2 {
+				width: 20%;
+				left: 0%;
+				top: 0%;
+				@include translate(100%, 100%);
+			}
+			&.c3 {
+				width: 45%;
+				right: 0;
+				top: 0;
+				@include translate(25%, -50%);
+			}
+			&.c4 {
+				width: 15%;
+				right: 0;
+				top: 30%;
+				@include translate(15%, -50%);
+			}
+			&.c5 {
+				width: 35%;
+				left: 0;
+				bottom: 5%;
+				@include translate(-10%, 50%);
+			}
+			&.c6 {
+				width: 20%;
+				right: 0;
+				bottom: 0;
+				@include translate(50%, 50%);
+			}
+			i {
+				display: block;
+				padding-top: 100%;
+				border-radius: 50%;
+				@include opacity(0.15);
+			}
+		}
+	}
+}
+
+.section-6 {
+	.time-slide {
+		position: relative;
+		.line-box2 {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 1px;
+			@include linearGradient(top, $color-0097FF, $color-B240FF);
+		}
+		&:before {
+			@include opacity(0);
+			content: '';
+			width: 1px;
+			@include linearGradient(top, $color-0097FF, $color-B240FF);
+		}
+		&.prev,
+		&.next {
+			&:before {
+				height: changeUnit(205);
+			}
+			.btn {
+				top: changeUnit(205);
+			}
+		}
+		&.prev-value,
+		&.next-value {
+			&:before {
+				height: changeUnit(280);
+			}
+			.btn {
+				top: changeUnit(280);
+			}
+		}
+		&.cur-value {
+			&:before {
+				height: changeUnit(220);
+			}
+			.btn {
+				top: changeUnit(220);
+			}
+		}
+		.btn {
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include translate(-50%, 0);
+		}
+	}
+	.cur-value {
+		.value-txt {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+	}
+}
+
+
+.team {
+	.team-item {
+		@at-root {
+			.no-touch &:hover {
+				background-color: $color-894CEE;
+			}
+		}
+	}
+	.team-pic {
+		width: changeUnit(150);
+		height: changeUnit(150);
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+}
+
+
+
+.break {
+	.gcol-1 {
+		position: relative;
+		.line-arrow {
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background-color: rgba($color-7652E6, 0.3);
+			&.up {
+				top: changeUnit(0);
+			}
+			&.down {
+				bottom: changeUnit(90);
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				left: 100%;
+				top: 50%;
+				width: changeUnit(8);
+				height: changeUnit(7);
+				background-image: url(images/icon-5.png);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				@include translate(0, -50%);
+			}
+		}
+	}
+}
+
+
+.particles {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#skrollr-body {
+	height: 100%;
+	overflow: hidden;
+}

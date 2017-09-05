@@ -1,0 +1,99 @@
+@charset "utf-8";
+/************************************************************************************************
+* 设置 间距 宽高
+**/
+@mixin class-space($value) {
+	.m#{$value} {
+		margin : changeUnit($value);
+	}
+	.mt#{$value} {
+		margin-top : changeUnit($value);
+	}
+	.mr#{$value} {
+		margin-right : changeUnit($value);
+	}
+	.mb#{$value} {
+		margin-bottom : changeUnit($value);
+	}
+	.ml#{$value} {
+		margin-left : changeUnit($value);
+	}
+	.m-#{$value} {
+		margin : changeUnit(-$value);
+	}
+	.mt-#{$value} {
+		margin-top : changeUnit(-$value);
+	}
+	.mr-#{$value} {
+		margin-right : changeUnit(-$value);
+	}
+	.mb-#{$value} {
+		margin-bottom : changeUnit(-$value);
+	}
+	.ml-#{$value} {
+		margin-left : changeUnit(-$value);
+	}
+
+	.p#{$value} {
+		padding : changeUnit($value);
+	}
+	.pt#{$value} {
+		padding-top : changeUnit($value);
+	}
+	.pr#{$value} {
+		padding-right : changeUnit($value);
+	}
+	.pb#{$value} {
+		padding-bottom : changeUnit($value);
+	}
+	.pl#{$value} {
+		padding-left : changeUnit($value);
+	}
+	.p-#{$value} {
+		padding : changeUnit(-$value);
+	}
+	.pt-#{$value} {
+		padding-top : changeUnit(-$value);
+	}
+	.pr-#{$value} {
+		padding-right : changeUnit(-$value);
+	}
+	.pb-#{$value} {
+		padding-bottom : changeUnit(-$value);
+	}
+	.pl-#{$value} {
+		padding-left : changeUnit(-$value);
+	}
+}
+
+
+@mixin class-width($value) {
+	.w#{$value} {
+		width : changeUnit($value);
+	}
+}
+@mixin class-height($value) {
+	.h#{$value} {
+		height : changeUnit($value);
+	}
+}
+@mixin class-lineHeight($value) {
+	.lh-#{$value}em {
+		line-height: $value / 10 + em;
+	}
+	.lh-#{$value} {
+		line-height: changeUnit($value);
+	}
+}
+@mixin class-lineHeightOver($value, $value2) {
+	.lh-#{$value}em-#{$value2}over {
+		height: $value / 10 * $value2 + em;
+		line-height: $value / 10 + em;
+		@include ellipsis($value2);
+	}
+	.lh-#{$value}-#{$value2}over {
+		height: changeUnit($value * $value2);
+		line-height: changeUnit($value);
+		@include ellipsis($value2);
+	}
+}

@@ -1,0 +1,28 @@
+@charset "utf-8";
+@include colors('primary', $color-primary);
+@include colors('success', $color-success);
+@include colors('info', $color-info);
+@include colors('warning', $color-warning);
+@include colors('danger', $color-danger);
+@include colors('darker', $color-darker);
+@include colors('dark', $color-dark);
+@include colors('gray', $color-gray);
+@include colors('light', $color-light);
+@include colors('lighter', $color-lighter);
+@include colors('white', $color-white);
+@include colors('black', $color-black);
+@include colors('yellow', $color-yellow);
+@include colors('red', $color-red);
+@include colors('blue', $color-blue);
+
+@include colors('0F9CFF', $color-0F9CFF);
+@include colors('8f5ff0', $color-8f5ff0);
+@include colors('999999', $color-999999);
+@include colors('9365F1', $color-9365F1);
+@include colors('B63EFF', $color-B63EFF);
+@include colors('0097FF', $color-0097FF);
+@include colors('B240FF', $color-B240FF);
+@include colors('894CEE', $color-894CEE);
+@include colors('7652E6', $color-7652E6);
+@include colors('8F5FF0', $color-8F5FF0);
+@include colors('5F38D7', $color-5F38D7);

@@ -1,0 +1,1946 @@
+@charset "utf-8"; /**
+* 颜色使用方法
+* hsl($hue,$saturation,$lightness)：通过色相（hue）、饱和度(saturation)和亮度（lightness）的值创建一个颜色；
+*
+* hsla($hue,$saturation,$lightness,$alpha)：通过色相（hue）、饱和度(saturation)、亮度（lightness）和透明（alpha）的值创建一个颜色；
+*
+* hue($color)：从一个颜色中获取色相（hue）值；
+*
+* saturation($color)：从一个颜色中获取饱和度（saturation）值；
+*
+* lightness($color)：从一个颜色中获取亮度（lightness）值；
+*
+* adjust-hue($color,$degrees)：通过改变一个颜色的色相值，创建一个新的颜色；
+*
+* lighten($color,$amount)：通过改变颜色的亮度值，让颜色变亮，创建一个新的颜色；
+*
+* darken($color,$amount)：通过改变颜色的亮度值，让颜色变暗，创建一个新的颜色；
+*
+* saturate($color,$amount)：通过改变颜色的饱和度值，让颜色更饱和，从而创建一个新的颜色
+*
+* desaturate($color,$amount)：通过改变颜色的饱和度值，让颜色更少的饱和，从而创建出一个新的颜色；
+*
+* grayscale($color)：将一个颜色变成灰色，相当于desaturate($color,100%);
+*
+* complement($color)：返回一个补充色，相当于adjust-hue($color,180deg);
+*
+* invert($color)：反回一个反相色，红、绿、蓝色值倒过来，而透明度不变。
+**/
+
+
+// 单位
+$unit : px;
+
+// 是否兼容 IE lt 9
+$lte9            : true !default;
+
+/************************************************************************************************
+* media 响应断点 以及 响应宽度
+* bp ==> breakpoint
+* rp ==> response
+* gt ==> giant
+* lg ==> large
+* md ==> middle
+* sm ==> small
+* tn ==> tiny
+* 节点的值要是px为单位
+**/
+$bp-gt-max       : 1780px;
+$rp-gt           : 100%;
+$bp-lg-max       : 1480px;
+$rp-lg           : 100%;
+$bp-md-max       : 1280px;
+$rp-md           : 100%;
+$bp-sm-max       : 1024px;
+$rp-sm           : 100%;
+$bp-tn-max       : 768px;
+$rp-tn           : 100%;
+
+$space        : 60;
+$gt-space        : 50;
+$lg-space        : 40;
+$md-space        : 30;
+$sm-space        : 30;
+$tn-space        : 25;
+$rp              : 100%;
+
+
+// 滚动条
+$scrollBoxBg: #cccccc;
+$scrollBarBg: #333333;
+
+
+// grid 栅格
+$gColumns: 8;
+$gSpace: 15;
+
+
+// easing 贝塞尔
+$easing-1: linear;
+$easing-2: ease-out;
+$easing-3: ease-in-out;
+$easing-4: cubic-bezier(0.93, 0.03, 0.3, 0.97);
+$easing-5: cubic-bezier(0.82, 0.09, 0, 1.42);
+
+
+// Button 按钮
+$btn-rp-ht: 24;
+$btn-rp-pd: 10;
+$btn-sm-ht: 30;
+$btn-sm-pd: 15;
+$btn-md-ht: 40;
+$btn-md-pd: 20;
+$btn-lg-ht: 50;
+$btn-lg-pd: 25;
+$btn-gt-ht: 60;
+$btn-gt-pd: 30;
+
+$btn-border-width: 2;
+$btn-border-thin-width: 1;
+$btn-border-thick-width: 4;
+
+
+// Font Size 文字大小
+$fs10: ( null : 10 );
+$fs11: ( null : 11 );
+$fs12: ( null : 12 );
+$fs13: ( null : 13 );
+$fs14: ( null : 14 );
+$fs15: ( null : 15 );
+$fs16: ( null : 16 );
+$fs18: ( null : 18,
+		$bp-md-max: 18 * 0.8 );
+$fs20: ( null : 20,
+		$bp-md-max: 20 * 0.8 );
+$fs24: ( null : 24,
+		$bp-md-max: 24 * 0.8 );
+$fs30: ( null : 30,
+		$bp-lg-max: 30 * 0.8,
+		$bp-md-max: 45 * 0.7 );
+$fs36: ( null : 36,
+		$bp-lg-max: 36 * 0.8,
+		$bp-md-max: 45 * 0.7 );
+$fs45: ( null : 45,
+		$bp-lg-max: 45 * 0.8,
+		$bp-md-max: 45 * 0.7,
+		$bp-sm-max: 45 * 0.6 );
+$fs48: ( null : 48,
+		$bp-lg-max: 48 * 0.8,
+		$bp-md-max: 48 * 0.7,
+		$bp-sm-max: 48 * 0.6 );
+$fs60: ( null : 60,
+		$bp-gt-max: 60 * 0.75,
+		$bp-lg-max: 60 * 0.6,
+		$bp-md-max: 60 * 0.55,
+		$bp-sm-max: 60 * 0.5,
+		$bp-tn-max: 60 * 0.45 );
+$fs72: ( null : 72,
+		$bp-gt-max: 70 * 0.75,
+		$bp-lg-max: 70 * 0.6,
+		$bp-md-max: 70 * 0.55,
+		$bp-sm-max: 72 * 0.5,
+		$bp-tn-max: 72 * 0.45 );
+$fs100: ( null : 100,
+		$bp-gt-max: 100 * 0.75,
+		$bp-lg-max: 100 * 0.6,
+		$bp-md-max: 100 * 0.5,
+		$bp-sm-max: 100 * 0.45,
+		$bp-tn-max: 100 * 0.4 );
+$fs115: ( null : 115,
+		$bp-gt-max: 115 * 0.75,
+		$bp-lg-max: 115 * 0.6,
+		$bp-md-max: 115 * 0.5,
+		$bp-sm-max: 115 * 0.45,
+		$bp-tn-max: 115 * 0.4 );
+
+
+// Font Family 字体
+$default-ff-arial: 'arial', SimSun, sans-serif, 'Microsoft Yahei', 'STHeiti Light';
+$default-ff-my   : 'Microsoft Yahei', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-timesNewRomanItalic   : 'TimesNewRomanItalic', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-centuryGothicBold   : 'CenturyGothicBold', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-helveticaNeueLTProLt   : 'HelveticaNeueLTProLt', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-DevilBreezeBold   : 'DevilBreezeBold', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-centurygothic   : 'centurygothic', SimSun, sans-serif, 'arial', 'STHeiti Light';
+
+$default-fs      : $fs14;
+$default-ff      : $default-ff-my;
+
+
+// 默认颜色值，不可删除改动
+$color           : #ffffff #000000 #333333 #666666 #999999 #cccccc !default;
+// 语义颜色 不可删除改动
+$color-primary   : #428bca !default;
+$color-success   : #5cb85c !default;
+$color-info      : #5bc0de !default;
+$color-warning   : #f0ad4e !default;
+$color-danger    : #d9534f !default; // 灰度颜色 不可删除改动
+$color-darker    : lighten(#000, 13.5%) !default; // #222
+$color-dark      : lighten(#000, 20%) !default; // #333
+$color-gray      : lighten(#000, 33.5%) !default; // #555
+$color-light     : lighten(#000, 46.7%) !default; // #777
+$color-lighter   : lighten(#000, 93.5%) !default; // #eee
+$color-white     : white !default;
+$color-black     : black !default;
+$color-yellow    : yellow !default;
+$color-red       : red !default;
+$color-blue      : blue !default;
+
+
+$body-bg: #fff;
+$body-color: #000;
+
+
+$color-0F9CFF: #0F9CFF;
+$color-8f5ff0: #8f5ff0;
+$color-999999: #999999;
+$color-9365F1: #9365F1;
+$color-B63EFF: #B63EFF;
+$color-0097FF: #0097FF;
+$color-B240FF: #B240FF;
+$color-894CEE: #894CEE;
+$color-7652E6: #7652E6;
+$color-8F5FF0: #8F5FF0;
+$color-5F38D7: #5F38D7;
+
+
+
+$border-color-1: rgba($color-white, 0.4);
+$border-color-2: rgba($color-white, 0.15);
+$border-color-3: rgba($color-black, 0.1);;@charset "utf-8";
+
+/************************************************************************************************
+* 单位
+**/
+$unit : px !default;
+@function changeUnit($number){
+	@if(unit($number) != "") {
+		@return $number;
+	}
+	@else if($unit == rem){
+		@return ($number * 0.01) + $unit;
+	}
+	@else{
+		@return $number + $unit;
+	}
+}
+@function stripUnits($number){
+	@return $number / ($number * 0 + 1);
+}
+@mixin fontSize($FSARRAY, $multiple:1) {
+	 @each $name , $value in $FSARRAY{
+		@if $name == null {
+			font-size: changeUnit($value * $multiple);
+		}
+		@else {
+			 @media screen and (max-width: $name){
+				font-size: changeUnit($value * $multiple);
+			}
+		}
+	}
+}
+
+/************************************************************************************************
+* css3 2d 3d
+**/
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition   : $transition;
+	-ms-transition    : $transition;
+	transition        : $transition;
+}
+@mixin transform($transform...) {
+	-webkit-transform: $transform;
+	-moz-transform   : $transform;
+	-ms-transform    : $transform;
+	transform        : $transform;
+}
+@mixin transformOrigin($x:center, $y:center) {
+	-webkit-transform-origin: $x $y;
+	-moz-transform-origin   : $x $y;
+	-ms-transform-origin    : $x $y;
+	transform-origin        : $x $y;
+}
+@mixin translate($x:50%, $y:50%) {
+	$value-x : if(unit($x) != "%", changeUnit($x), $x);
+	$value-y : if(unit($y) != "%", changeUnit($y), $y);
+	-webkit-transform: translate($value-x, $value-y);
+	-moz-transform   : translate($value-x, $value-y);
+	-ms-transform    : translate($value-x, $value-y);
+	transform        : translate($value-x, $value-y);
+}
+@mixin translate3d($x:50%, $y:50%, $z:50%) {
+	$value-x : if(unit($x) != "%", changeUnit($x), $x);
+	$value-y : if(unit($y) != "%", changeUnit($y), $y);
+	$value-z : if(unit($z) != "%", changeUnit($z), $z);
+	-webkit-transform: translate3d($value-x, $value-y, $value-z);
+	-moz-transform   : translate3d($value-x, $value-y, $value-z);
+	-ms-transform    : translate3d($value-x, $value-y, $value-z);
+	transform        : translate3d($value-x, $value-y, $value-z);
+}
+@mixin scale($x:1, $y:1) {
+	-webkit-transform: scale($x, $y);
+	-moz-transform   : scale($x, $y);
+	-ms-transform    : scale($x, $y);
+	transform        : scale($x, $y);
+}
+@mixin scale3d($x:1, $y:1, $z:1) {
+	-webkit-transform: scale($x, $y, $z);
+	-moz-transform   : scale($x, $y, $z);
+	-ms-transform    : scale($x, $y, $z);
+	transform        : scale($x, $y, $z);
+}
+@mixin rotate($value:0deg) {
+	-webkit-transform: rotate($value);
+	-moz-transform   : rotate($value);
+	-ms-transform    : rotate($value);
+	transform        : rotate($value);
+}
+@mixin rotateX($value:0deg) {
+	-webkit-transform: rotateX($value);
+	-moz-transform   : rotateX($value);
+	-ms-transform    : rotateX($value);
+	transform        : rotateX($value);
+}
+@mixin rotateY($value:0deg) {
+	-webkit-transform: rotateY($value);
+	-moz-transform   : rotateY($value);
+	-ms-transform    : rotateY($value);
+	transform        : rotateY($value);
+}
+@mixin rotateZ($value:0deg) {
+	-webkit-transform: rotateZ($value);
+	-moz-transform   : rotateZ($value);
+	-ms-transform    : rotateZ($value);
+	transform        : rotateZ($value);
+}
+@mixin skew($x:0, $y:0) {
+	-webkit-transform: skew($x, $y);
+	-moz-transform   : skew($x, $y);
+	-ms-transform    : skew($x, $y);
+	transform        : skew($x, $y);
+}
+@mixin delay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay   : $delay;
+	-ms-transition-delay    : $delay;
+	transition-delay        : $delay;
+}
+@mixin transformStyle($value:preserve-3d) {
+	-webkit-transform-style: $value;
+	-moz-transform-style   : $value;
+	-ms-transform-style    : $value;
+	transform-style        : $value;
+}
+@mixin perspective($value:800px) {
+	//Chrome 和 Safari 支持替代的 -webkit-perspective 属性。
+	-webkit-perspective: changeUnit($value);
+	-moz-perspective   : changeUnit($value);
+	-ms-perspective    : changeUnit($value);
+	perspective        : changeUnit($value);
+}
+@mixin perspectiveOrigin($x:50%, $y:50%) {
+	-webkit-perspective-origin: $x $y;
+	-moz-perspective-origin   : $x $y;
+	-ms-perspective-origin    : $x $y;
+	perspective-origin        : $x $y;
+}
+@mixin backfaceVisibility($value:hidden) {
+	-webkit-backface-visibility: $value;
+	-moz-backface-visibility   : $value;
+	-ms-backface-visibility    : $value;
+	backface-visibility        : $value;
+}
+/************************************************************************************************
+* 其他
+**/
+@mixin opacity($value) {
+	opacity: $value;
+	filter:alpha(opacity=$value*100);
+}
+@mixin textSizeAdjust($value:100%) {
+	-webkit-text-size-adjust: $value;
+	-moz-text-size-adjust   : $value;
+	-ms-text-size-adjust    : $value;
+	text-size-adjust        : $value;
+}
+/************************************************************************************************
+* 盒子 显示模式
+**/
+@mixin display($value:flex) {
+	display: -webkit-+$value;
+	display: -moz-+$value;
+	display: -ms-+$value;
+	display: -o-+$value;
+	display: $value;
+}
+@mixin flex($value:1) {
+	-webkit-flex: $value;
+	-moz-flex   : $value;
+	-ms-flex    : $value;
+	flex        : $value;
+}
+@mixin boxSizing($value:border-box) {
+	-webkit-box-sizing: $value;
+	-moz-box-sizing   : $value;
+	-ms-box-sizing    : $value;
+	box-sizing        : $value;
+}
+/************************************************************************************************
+* 文本溢出
+**/
+%ellipsis1 {
+   display           : -webkit-box;
+   -webkit-box-orient: vertical;
+}
+%ellipsis2 {
+	display    : block;
+	white-space: nowrap;
+}
+%ellipsis3 {
+	text-overflow   : ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow        : hidden;
+}
+@mixin ellipsis($clamp: 1) {
+	 @if $clamp > 1{
+		-webkit-line-clamp: $clamp;
+		@extend %ellipsis1;
+	}
+	@else {
+		@extend %ellipsis2;
+	}
+	@extend %ellipsis3;
+}
+/************************************************************************************************
+* 对齐方式
+**/
+// 容器属性 Begin
+@mixin flex-direction($value:row) {
+	// 属性可选值的范围为row(默认)沿水平主轴由左向右排列、row-reverse沿水平主轴由右向左排列、column沿垂直主轴右上到下和column-reverse。
+	// .box { flex-direction: row | row-reverse | column | column-reverse; }
+	-webkit-flex-direction: $value;
+	-moz-flex-direction   : $value;
+	-ms-flex-direction    : $value;
+	flex-direction        : $value;
+}
+@mixin flex-wrap($value:nowrap) {
+	// 属性可选值的范围为nowrap(默认)不换行、wrap换行（第一行在上方）和wrap-reverse（你懂的~）
+	// .box{ flex-wrap: nowrap | wrap | wrap-reverse; }
+	-webkit-flex-wrap: $value;
+	-moz-flex-wrap   : $value;
+	-ms-flex-wrap    : $value;
+	flex-wrap        : $value;
+}
+@mixin flex-flow($value) {
+	// 写法属性中，将上述两种方法的值用||连接即可
+	// .box { flex-flow: <flex-direction> || <flex-wrap>; }
+	-webkit-flex-flow: $value;
+	-moz-flex-flow   : $value;
+	-ms-flex-flow    : $value;
+	flex-flow        : $value;
+}
+@mixin align-items($value:center) {
+	// .box { align-items: flex-start | flex-end | center | baseline | stretch; }
+	-webkit-align-items: $value;
+	-moz-align-items   : $value;
+	-ms-align-items    : $value;
+	align-items        : $value;
+}
+@mixin align-content($value:center) {
+	// .box { align-content: flex-start | flex-end | center | space-between | space-around | stretch; }
+	-webkit-align-content: $value;
+	-moz-align-content   : $value;
+	-ms-align-content    : $value;
+	align-content        : $value;
+}
+@mixin justify-content($value:center) {
+	// .box { justify-content: flex-start | flex-end | center | space-between | space-around; }
+	-webkit-justify-content: $value;
+	-moz-justify-content   : $value;
+	-ms-justify-content    : $value;
+	justify-content        : $value;
+}
+// 容器属性 End
+// 项目属性 Begin
+@mixin order($value:0) {
+	// 项目的排列顺序。数值越小，排列越靠前，默认为0。
+	// order: <integer>;
+	-webkit-order: $value;
+	-moz-order   : $value;
+	-ms-order    : $value;
+	order        : $value;
+}
+@mixin flex-grow($value:0) {
+	// 项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+	// flex-grow: <number>; /* default 0 */
+	-webkit-flex-grow: $value;
+	-moz-flex-grow   : $value;
+	-ms-flex-grow    : $value;
+	flex-grow        : $value;
+}
+@mixin flex-shrink($value:1) {
+	// 项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+	// flex-shrink: <number>; /* default 1 */
+	-webkit-flex-shrink: $value;
+	-moz-flex-shrink   : $value;
+	-ms-flex-shrink    : $value;
+	flex-shrink        : $value;
+}
+@mixin flex-basis($value:auto) {
+	// 在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+	// flex-basis: <length> | auto; /* default auto */
+	-webkit-flex-basis: $value;
+	-moz-flex-basis   : $value;
+	-ms-flex-basis    : $value;
+	flex-basis        : $value;
+}
+@mixin flex($value...) {
+	// 是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+	// flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+	-webkit-flex: $value;
+	-moz-flex   : $value;
+	-ms-flex    : $value;
+	flex        : $value;
+}
+@mixin align-self($value:auto) {
+	// 允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+	// align-self: auto | flex-start | flex-end | center | baseline | stretch;
+	-webkit-align-self: $value;
+	-moz-align-self   : $value;
+	-ms-align-self    : $value;
+	align-self        : $value;
+}
+// 项目属性 End
+/************************************************************************************************
+* 渐变 阴影
+**/
+@mixin colors($sort: #fff, $value: #fff) {
+	.color-#{$sort} {
+		color: $value;
+	}
+
+	.bg-color-#{$sort} {
+		background-color: $value;
+	}
+}
+@mixin blur($px:4) {
+	-webkit-filter: blur($px + px);
+	-moz-filter: blur($px + px);
+	-ms-filter: blur($px + px);
+	filter: blur($px + px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=$px, MakeShadow=false);
+}
+@mixin linearGradient($values...) {
+	background-image: -webkit-linear-gradient($values);
+	background-image: -moz-linear-gradient($values);
+	background-image: -ms-linear-gradient($values);
+	background-image: -o-linear-gradient($values);
+	background-image: linear-gradient($values);
+}
+@mixin repeatLinearGradient($values...) {
+	background-image: -webkit-repeating-linear-gradient($values);
+	background-image: -moz-repeating-linear-gradient($values);
+	background-image: -ms-repeating-linear-gradient($values);
+	background-image: -o-repeating-linear-gradient($values);
+	background-image: repeating-linear-gradient($values);
+}
+@mixin radialGradient($type:circle, $color...) {
+	background-image: -webkit-radial-gradient($type, $color);
+	background-image: -moz-radial-gradient($type, $color);
+	background-image: -ms-radial-gradient($type, $color);
+	background-image: -o-radial-gradient($type, $color);
+	background-image: radial-gradient($type, $color);
+}
+@mixin repeatRadialGradient($type:circle, $color...) {
+	background-image: -webkit-repeating-radial-gradient($type, $color);
+	background-image: -moz-repeating-radial-gradient($type, $color);
+	background-image: -ms-repeating-radial-gradient($type, $color);
+	background-image: -o-repeating-radial-gradient($type, $color);
+	background-image: repeating-radial-gradient($type, $color);
+}
+@mixin boxShadow($value...) {
+	-webkit-box-shadow: $value;
+	box-shadow        : $value;
+}
+@mixin textShadow($value...) {
+	-webkit-text-shadow: $value;
+	text-shadow        : $value;
+}
+@mixin noShaking(){
+	// 谷歌浏览器上移晃动
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+}
+/************************************************************************************************
+* 动画
+**/
+@mixin animation($args) {
+	-webkit-animation     : $args;
+	-moz--webkit-animation: $args;
+	-ms-animation         : $args;
+	animation             : $args;
+}
+@mixin animationPlayState($args) {
+	-webkit-animation-play-state     : $args;
+	-moz--webkit-animation-play-state: $args;
+	-ms-animation-play-state         : $args;
+	animation-play-state             : $args;
+}
+@mixin keyframes($aniName) {
+	 @-webkit-keyframes #{$aniName}{
+		@content;
+	}
+	@-moz-keyframes #{$aniName} {
+		 @content;
+	}
+	@-ms-keyframes #{$aniName} {
+		 @content;
+	}
+	@keyframes #{$aniName} {
+		 @content;
+	}
+}
+/************************************************************************************************
+* 表单
+**/
+@mixin appearance($value:none) {
+	-webkit-appearance: $value;
+	-moz-appearance   : $value;
+	-ms-appearance    : $value;
+	appearance        : $value;
+}
+@mixin placeholder() {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+@mixin placeholderColor($value:nth($color, 6)) {
+	&::-webkit-input-placeholder {
+		color: $value;
+	}
+	&::-moz-placeholder {
+		color: $value;
+	}
+	&:-ms-input-placeholder {
+		color: $value;
+	}
+}
+@mixin placeholderCenter($value:center) {
+	&::-webkit-input-placeholder {
+		text-align: $value;
+	}
+	&::-moz-placeholder {
+		text-align: $value;
+	}
+	&:-ms-input-placeholder {
+		text-align: $value;
+	}
+}
+/************************************************************************************************
+* 设置 背景，包括retina屏幕
+**/
+@mixin imgBgRetina($file-1x, $file-2x) {
+	background-image: url($file-1x);
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and ( min--moz-device-pixel-ratio: 2),
+		only screen and ( -o-min-device-pixel-ratio: 2/1),
+		only screen and ( min-device-pixel-ratio: 2),
+		only screen and ( min-resolution: 192dpi),
+		only screen and ( min-resolution: 2dppx) {
+			background-image: url($file-2x);
+		}
+}
+@mixin screen($res-min, $res-max) {
+	@media screen and ( min-width: $res-min ) and ( max-width: $res-max ){
+		@content;
+	}
+}
+
+%fl {
+	float: left;
+}
+
+%fr {
+	float: right;
+}
+
+%m-auto {
+	margin-left : auto;
+	margin-right: auto;
+}
+
+%no-width {
+	width: 0 !important;
+}
+
+%no-boxshadow {
+	box-shadow: none !important;
+}
+
+%no-height {
+	height: 0 !important;
+}
+
+%no-border {
+	border: none !important;
+}
+
+%no-bg {
+	background: none !important;
+}
+
+%no-bgc {
+	background-color: none !important;
+}
+
+%no-bgi {
+	background-image: none !important;
+}
+
+%no-pt {
+	padding-top: 0 !important;
+}
+
+%no-pr {
+	padding-right: 0 !important;
+}
+
+%no-pb {
+	padding-bottom: 0 !important;
+}
+
+%no-pl {
+	padding-left: 0 !important;
+}
+
+%no-mt {
+	margin-top: 0 !important;
+}
+
+%no-mr {
+	margin-right: 0 !important;
+}
+
+%no-mb {
+	margin-bottom: 0 !important;
+}
+
+%no-ml {
+	margin-left: 0 !important;
+}
+
+
+%clear {
+	display : block;
+	height  : 0;
+	overflow: hidden;
+	clear   : both;
+}
+
+%clearfix {
+	content: '\20';
+	display: block;
+	height : 0;
+	clear  : both;
+	*zoom  : 1;
+}
+
+%uppercase {
+	text-transform: uppercase;
+}
+%lowercase {
+	text-transform: lowercase;
+}
+%capitalize {
+	text-transform: capitalize;
+}
+;@charset "utf-8";
+/* 计算正方形和圆形的宽度 */
+@mixin setSquareWidth($width) {
+	&.btn-circle,
+	&.btn-square {
+		width: changeUnit($width);
+	}
+}
+/* 计算有边框的行高 */
+@mixin setBorderLineHeight($height) {
+	@if $height == 'auto' {
+		line-height: 1em;
+	}
+	@else {
+		&.btn-border {
+			line-height: changeUnit($height - $btn-border-width * 2);
+		}
+
+		&.btn-border-thin {
+			line-height: changeUnit($height - $btn-border-thin-width * 2);
+		}
+
+		&.btn-border-thick {
+			line-height: changeUnit($height - $btn-border-thick-width * 2);
+		}
+	}
+}
+/* 设置3d按钮的shadow颜色值 */
+@mixin set3DColor($top, $shadow, $shadow2) {
+	@include boxShadow($shadow);
+	@at-root {
+		&.active,
+		&:active,
+		.btn-parent.active &,
+		.no-touch &:hover {
+			top: $top;
+			@include boxShadow($shadow2);
+		}
+	}
+}
+/* 创建自定义按钮class */
+/* 创建自定义按钮class */
+@mixin createBtnSize($class, $height, $paddingHorizontal, $paddingVertical: false) {
+	.btn-#{$class} {
+		height       : changeUnit($height);
+		line-height  : changeUnit($height);
+		padding-left : changeUnit($paddingHorizontal);
+		padding-right: changeUnit($paddingHorizontal);
+		@if $paddingVertical != false {
+			padding-top   : changeUnit($paddingVertical);
+			padding-bottom: changeUnit($paddingVertical);
+		}
+		@include setSquareWidth($height);
+		@include setBorderLineHeight($height);
+	}
+}
+/* 按钮颜色 */
+@mixin createBtnStyle($fontColor: false, $bgColor: false, $borderColor: false) {
+	@if $fontColor == false{
+		$fontColor: transparent, transparent;
+	}
+	@if $bgColor == false {
+		$bgColor: transparent, transparent;
+	}
+	@if $borderColor == false {
+		$borderColor: $bgColor;
+	}
+	color           : nth($fontColor, 1);
+	background-color: nth($bgColor, 1);
+	@at-root {
+		&.active,
+		&:active,
+		.btn-parent.active &,
+		.no-touch &:hover {
+			color           : nth($fontColor, 2);
+			background-color: nth($bgColor, 2);
+		}
+	}
+
+	&.btn-border,
+	&.btn-border-thick,
+	&.btn-border-thin {
+		border-color: nth($borderColor, 1);
+		@at-root {
+			&.active,
+			&:active,
+			.btn-parent.active &,
+			.no-touch &:hover {
+				border-color: nth($borderColor, 2);
+			}
+		}
+	}
+	@if (nth($bgColor, 1) == transparent) and (nth($bgColor, 2) == transparent) {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 1) == transparent {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 transparent, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else if nth($bgColor, 2) == transparent {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 transparent, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+	@else {
+		&.btn-3d {
+			@include set3DColor(changeUnit(5), (0 changeUnit(7) 0 darken(nth($bgColor, 1), 6), 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2)), (0 changeUnit(2) 0 darken(nth($bgColor, 2), 8), 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2)));
+		}
+	}
+};@charset "utf-8";
+/************************************************************************************************
+* 设置 间距 宽高
+**/
+@mixin class-space($value) {
+	.m#{$value} {
+		margin : changeUnit($value);
+	}
+	.mt#{$value} {
+		margin-top : changeUnit($value);
+	}
+	.mr#{$value} {
+		margin-right : changeUnit($value);
+	}
+	.mb#{$value} {
+		margin-bottom : changeUnit($value);
+	}
+	.ml#{$value} {
+		margin-left : changeUnit($value);
+	}
+	.m-#{$value} {
+		margin : changeUnit(-$value);
+	}
+	.mt-#{$value} {
+		margin-top : changeUnit(-$value);
+	}
+	.mr-#{$value} {
+		margin-right : changeUnit(-$value);
+	}
+	.mb-#{$value} {
+		margin-bottom : changeUnit(-$value);
+	}
+	.ml-#{$value} {
+		margin-left : changeUnit(-$value);
+	}
+
+	.p#{$value} {
+		padding : changeUnit($value);
+	}
+	.pt#{$value} {
+		padding-top : changeUnit($value);
+	}
+	.pr#{$value} {
+		padding-right : changeUnit($value);
+	}
+	.pb#{$value} {
+		padding-bottom : changeUnit($value);
+	}
+	.pl#{$value} {
+		padding-left : changeUnit($value);
+	}
+	.p-#{$value} {
+		padding : changeUnit(-$value);
+	}
+	.pt-#{$value} {
+		padding-top : changeUnit(-$value);
+	}
+	.pr-#{$value} {
+		padding-right : changeUnit(-$value);
+	}
+	.pb-#{$value} {
+		padding-bottom : changeUnit(-$value);
+	}
+	.pl-#{$value} {
+		padding-left : changeUnit(-$value);
+	}
+}
+
+
+@mixin class-width($value) {
+	.w#{$value} {
+		width : changeUnit($value);
+	}
+}
+@mixin class-height($value) {
+	.h#{$value} {
+		height : changeUnit($value);
+	}
+}
+@mixin class-lineHeight($value) {
+	.lh-#{$value}em {
+		line-height: $value / 10 + em;
+	}
+	.lh-#{$value} {
+		line-height: changeUnit($value);
+	}
+}
+@mixin class-lineHeightOver($value, $value2) {
+	.lh-#{$value}em-#{$value2}over {
+		height: $value / 10 * $value2 + em;
+		line-height: $value / 10 + em;
+		@include ellipsis($value2);
+	}
+	.lh-#{$value}-#{$value2}over {
+		height: changeUnit($value * $value2);
+		line-height: changeUnit($value);
+		@include ellipsis($value2);
+	}
+};@charset "utf-8";
+%gPdH {
+	padding-left: changeUnit($gSpace);
+	padding-right: changeUnit($gSpace);
+}
+%gPdV {
+	padding-top: changeUnit($gSpace);
+	padding-bottom: changeUnit($gSpace);
+}
+%gMg-H {
+	margin-left: changeUnit(-$gSpace);
+	margin-right: changeUnit(-$gSpace);
+}
+%gMg-V {
+	margin-top: changeUnit(-$gSpace);
+	margin-bottom: changeUnit(-$gSpace);
+}
+@mixin grid($name){
+	@if ($name != false) {
+		@for $value from 0 through $gColumns {
+			.gcol-#{$name}-#{$value} {
+				float: left;
+				width: $value / $gColumns * 100%;
+			}
+			.gcol-#{$name}-ol-#{$value} {
+				margin-left: $value / $gColumns * 100%;
+			}
+			.gcol-#{$name}-or-#{$value} {
+				margin-right: $value / $gColumns * 100%;
+			}
+		}
+	}
+	@else {
+		@for $value from 0 through $gColumns {
+			.gcol-#{$value} {
+				float: left;
+				width: $value / $gColumns * 100%;
+			}
+			.gcol-ol-#{$value} {
+				margin-left: $value / $gColumns * 100%;
+			}
+			.gcol-or-#{$value} {
+				margin-right: $value / $gColumns * 100%;
+			}
+		}
+	}
+}
+@mixin gridCommon(){
+	.grow {
+		@extend %gMg-H;
+	}
+	.growVertical {
+		@extend %gMg-V;
+	}
+	@for $value from 0 through $gColumns {
+		.gcol-tn-#{$value},
+		.gcol-sm-#{$value},
+		.gcol-md-#{$value},
+		.gcol-lg-#{$value},
+		.gcol-gt-#{$value},
+		.gcol-#{$value} {
+			position: relative;
+			@extend %gPdH;
+		}
+		.grow-vertical {
+			.gcol-tn-#{$value},
+			.gcol-sm-#{$value},
+			.gcol-md-#{$value},
+			.gcol-lg-#{$value},
+			.gcol-gt-#{$value},
+			.gcol-#{$value} {
+				@extend %gPdV;
+			}
+		}
+	}
+};@charset "utf-8";
+// 自定义盒阴影，文字阴影
+// 可删除，可改动
+// 例如：$boxshadow1 : changeUnit(5) changeUnit(6) changeUnit(11) 0 rgba(nth($color, 2), 0.09);
+// 例如：$textshadow1 : changeUnit(5) changeUnit(6) changeUnit(11) 0 rgba(nth($color, 2), 0.09);
+;@charset "utf-8";
+// 图标样式
+.icon-why {
+	display: inline-block;
+	width: changeUnit(140);
+	height: changeUnit(140);
+	background-image: url(images/icon-why.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: left 0;
+	@for $i from 1 to 5 {
+		&.icon-#{$i} {
+			background-position: left changeUnit(-140 * ($i - 1));
+		}
+	}
+	//
+	// @for $i from 1 to 3 {
+	// 	&.icon-#{$i} {
+	// 		background-position: left -30px * ($i * 2 - 2);
+	// 	}
+	// }
+	// @at-root {
+	// 	.no-touch .icon-hover:hover,
+	// 	.icon-hover.active {
+	// 		.icon-notices {
+	// 			@for $i from 1 to 3 {
+	// 				&.icon-#{$i} {
+	// 					background-position: left -30px * ($i * 2 - 1);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+
+
+
+
+
+@media screen and (max-width: $bp-gt-max){
+
+}
+@media screen and (max-width: $bp-lg-max){
+
+}
+@media screen and (max-width: $bp-md-max){
+
+}
+@media screen and (max-width: $bp-sm-max){
+
+}
+@media screen and (max-width: $bp-tn-max){
+
+}
+;@charset "utf-8";
+.f-cr-style-1 {
+	height: changeUnit(25);
+	line-height: changeUnit(25);
+	.f-cr-icon {
+		width: changeUnit(25);
+		height: changeUnit(25);
+		border-radius: changeUnit(4);
+		background-color: #fff;
+		box-shadow: 0 changeUnit(2) changeUnit(6) 0 rgba(0,0,0,0.13);
+		vertical-align: middle;
+		.checked {
+			width: 50%;
+			height: 50%;
+			background: #218FF8;
+			border-radius: changeUnit(4);
+		}
+	}
+	input[type="text"] {
+		visibility: hidden;
+	}
+	.f-cr-name {
+		color: #262D3F;
+	}
+	.f-cr {
+		&:checked {
+			& + .f-cr-content {
+				.f-cr-name {
+					color: #218FF8;
+				}
+				.f-cr-icon {
+					border-color: #218FF8;
+				}
+				.fa,
+				.checked {
+					display: block;
+				}
+				input[type="text"] {
+					visibility: visible;
+				}
+			}
+		}
+	}
+}
+.f-cr-style-2 {
+	height: changeUnit(22);
+	line-height: changeUnit(22);
+	.f-cr-icon {
+		width: changeUnit(22);
+		height: changeUnit(22);
+		border: changeUnit(1) solid #858585;
+		background-color: #fff;
+		border-radius: changeUnit(4);
+		.checked {
+			width: 50%;
+			height: 50%;
+			background: #11274f;
+			border-radius: changeUnit(4);
+		}
+	}
+	.f-cr-name {
+		color: #333;
+	}
+	.f-cr {
+		&:checked {
+			& + .f-cr-content {
+				.f-cr-name {
+					color: #11274f;
+				}
+				.f-cr-icon {
+					border-color: #11274f;
+				}
+				.fa,
+				.checked {
+					display: block;
+				}
+			}
+		}
+	}
+}
+;@charset 'utf-8';
+// @include createBtnSize(name, height, pd-horizontal, pd-vertical(可省略) ); 自定义按钮大小
+// @include createBtnStyle((fontColor, fontActiveColor), (bgColor, bgActiveColor), (borderColor, borderActiveColor), (可省略, 可省略)); 自定义按钮样式
+
+
+@include createBtnSize(h46, 46, 20);
+@include createBtnSize(h40, 40, 20);
+@include createBtnSize(h60, 60, 30);
+@include createBtnSize(h260, 260, 40);
+
+.btn-style-1 {
+	@include createBtnStyle(
+							($color-white, $color-white),
+							($color-9365F1, darken($color-9365F1, 6)),
+							($color-9365F1, darken($color-9365F1, 6))
+	)
+}
+.btn-style-2 {
+	@include createBtnStyle(
+							($color-white, $color-white),
+							($color-B63EFF, darken($color-B63EFF, 6)),
+							($color-B63EFF, darken($color-B63EFF, 6))
+	)
+}
+
+.btn-style-speical-1 {
+	position: relative;
+	@include createBtnStyle(
+				($color-white, $color-0F9CFF),
+				(transparent, transparent),
+				($color-white, $color-white)
+	);
+	span {
+		position: relative;
+		z-index: 3;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 100%;
+		top: 0;
+		bottom: 0;
+		background-color: $color-white;
+		@include transition(all 0.4s $easing-1);
+	}
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			&:before {
+				right: 0;
+			}
+		}
+	}
+}
+.btn-style-speical-2 {
+	position: relative;
+	padding-right: changeUnit(50);
+	@include transition(all 0.4s $easing-1);
+	@include createBtnStyle(
+				($color-white, $color-white),
+				($color-8f5ff0, darken($color-8f5ff0, 6)),
+				($color-8f5ff0, darken($color-8f5ff0, 6))
+	);
+	span {
+		position: relative;
+		z-index: 3;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		width: changeUnit(50);
+		height: 1px;
+		margin-top: -0.5px;
+		background-color: $color-white;
+		@include transition(all 0.4s $easing-1);
+	}
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			padding-right: changeUnit(25);
+			padding-left: changeUnit(25);
+			&:before {
+				width: 0;
+			}
+		}
+	}
+};@charset "utf-8";
+// 列表
+// 列表名字，不能写语义class，防止其他地方内容使用这个列表
+// 列表嵌套，图文列表为 pic-txt-list ptl-pic ptl-txt ptl-btn
+// 列表嵌套，图列表为 pic-list pl-pic pl-txt pl-btn
+// 列表嵌套，文列表为 txt-list tl-pic tl-txt tl-btn
+;@charset "utf-8";
+// 公共组件，重复利用次数达到两次及以上的
+
+.bg-img-parent {
+    position: relative;
+}
+.bg-img {
+    position: relative;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.default-select {
+    border: solid changeUnit(1) #fff;
+    padding-right: changeUnit(14);
+    background: #fff url("http://ourjs.github.io/static/2015/arrow.png") no-repeat right center;
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+.pagination-style-1 {
+    position: static;
+    text-align: center;
+    height: auto;
+    @include display();
+    @include justify-content(center);
+    .swiper-pagination-bullet {
+        float: left;
+        margin: 0 changeUnit(8);
+        width: changeUnit(15);
+        height: changeUnit(15);
+        background-color: #E8E8E8;
+        @include opacity(1);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #11274F;
+    }
+}
+
+
+.scroll-bd {
+    position: relative;
+    overflow: hidden;
+    padding-right: changeUnit(15);
+}
+
+
+.type-desc {
+    &.lh-14em {
+        li {
+            &:before {
+                top: 0.7em;
+            }
+        }
+    }
+    &.lh-16em {
+        li {
+            &:before {
+                top: 0.8em;
+            }
+        }
+    }
+    &.lh-18em {
+        li {
+            &:before {
+                top: 0.9em;
+            }
+        }
+    }
+    &.lh-20em {
+        li {
+            &:before {
+                top: 1em;
+            }
+        }
+    }
+    li {
+        position: relative;
+        padding-left: changeUnit(15);
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: changeUnit(6);
+            height: changeUnit(6);
+            background-color: $color-white;
+            border-radius: 50%;
+            @include translate(-50%, -50%)
+        }
+    }
+}
+
+
+.times-style-1 {
+    li {
+        position: relative;
+        float: left;
+        width: changeUnit(80);
+        height: changeUnit(85);
+        border: 1px solid $border-color-1;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: changeUnit(13);
+            height: changeUnit(4);
+            background-color: $color-white;
+            @include translate(-50%, 0);
+        }
+    }
+}
+
+
+
+.lines {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .wrapper,
+    .grow,
+    .gcol-1 {
+        height: 100%;
+    }
+    .gcol-1 {
+        position: relative;
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: $border-color-2;
+            margin-left: -0.5px;
+        }
+        &:before {
+            content: '';
+            left: 0;
+        }
+        &:last-child {
+            &:after {
+                content: '';
+                left: 100%;
+            }
+        }
+        .line-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .line-box2,
+        .line-box3 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: changeUnit(8);
+                height: changeUnit(8);
+                border-radius: 50%;
+                @include translate(-50%, 0);
+            }
+            .line-txt {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                @include transform(translate(-50%, 0) rotate(90deg));
+            }
+        }
+        .line-box2 {
+            @include linearGradient(top, $color-0097FF, $color-B240FF);
+            &:before {
+                background-color: $color-B240FF;
+            }
+        }
+        .line-box3 {
+            background-color: $color-white;
+            &:before {
+                background-color: $color-white;
+            }
+        }
+    }
+}
+.lines-1 {
+    .gcol-1 {
+        &:before,
+        &:after {
+            background-color: $border-color-2;
+        }
+    }
+}
+.lines-2 {
+    .gcol-1 {
+        &:before,
+        &:after {
+            background-color: $border-color-3;
+        }
+    }
+}
+
+
+
+.charts {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    .wrapper,
+    .grow,
+    .gcol-1 {
+        height: 100%;
+        position: relative;
+        .chart {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+
+
+.add-btn {
+    position: relative;
+    display: block;
+    width: changeUnit(22);
+    height: changeUnit(22);
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: changeUnit(5);
+        background-color: $color-white;
+        &:nth-child(1) {
+            @include translate(-50%, -50%);
+        }
+        &:nth-child(2) {
+            @include transform(translate(-50%, -50%) rotate(90deg));
+        }
+    }
+}
+.add-btn2 {
+    position: relative;
+    display: block;
+    width: changeUnit(18);
+    height: changeUnit(18);
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: changeUnit(2);
+        background-color: $color-white;
+        &:nth-child(1) {
+            @include translate(-50%, -50%);
+        }
+        &:nth-child(2) {
+            @include transform(translate(-50%, -50%) rotate(90deg));
+        }
+    }
+}
+
+
+.i-fr {
+    float: right;
+}
+.i-fl {
+    float: left;
+}
+
+
+.ul-1 {
+    padding-left: changeUnit(18);
+};@charset "utf-8";
+
+.header {
+	position: fixed;
+	top: changeUnit(38);
+	left: 0;
+	right: 0;
+	z-index: 9;
+	.logo {
+
+	}
+	.menu-btn {
+		position: absolute;
+		top: 50%;
+		right: changeUnit($space);
+		@include translate(0, -50%);
+	}
+}
+
+.menu-btn {
+	height: changeUnit(30);
+	line-height: changeUnit(30);
+	cursor: pointer;
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			.menu-icon {
+				span {
+					@include rotate(90deg);
+				}
+			}
+		}
+	}
+	.menu-name {
+		float: left;
+		padding-right: changeUnit(15);
+	}
+	.menu-icon {
+		position: relative;
+		float: right;
+		height: inherit;
+		width: changeUnit(16);
+		span {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: block;
+			overflow: hidden;
+			@include transition(all 0.3s linear);
+		}
+		i {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background-color: $color-white;
+			&:nth-child(1) {
+				left: 0;
+			}
+			&:nth-child(2) {
+				left: 50%;
+			}
+			&:nth-child(3) {
+				right: 0;
+			}
+		}
+	}
+};@charset "utf-8";
+// 底部样式
+.footer {
+	border-top: 1px solid $border-color-3;
+};@charset "utf-8";
+
+.section {
+	position: relative;
+	.lines {
+		z-index: 1;
+	}
+	.cont {
+		position: relative;
+		z-index: 2;
+	}
+}
+
+.section-1 {
+	background-color: $color-0F9CFF;
+	.cont {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.earth {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-size: auto;
+		background-position: center;
+	}
+	.txt {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		@include translate(0, -50%);
+	}
+	.btns {
+		.btn {
+			display: block;
+		}
+	}
+	.scroll-down {
+		position: absolute;
+		bottom: changeUnit(100);
+		left: 50%;
+		@include translate(-50%, 0);
+		&:before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			bottom: 100%;
+			width: 1px;
+			height: changeUnit(40);
+			margin-left: -0.5px;
+			margin-bottom: changeUnit(10);
+			background-color: $color-white;
+		}
+	}
+}
+
+.section-2 {
+	background-color: $color-white;
+	.lines {
+		z-index: 2;
+	}
+	.charts {
+		z-index: 1;
+		background-size: 102% auto;
+		background-position: center bottom;
+		.num {
+			position: absolute;
+			left: 0;
+			padding-left: changeUnit(25);
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 1px;
+				height: changeUnit(15);
+				background-color: $color-8f5ff0;
+				@include translate(0, -50%);
+			}
+			&:after {
+				@include transform(translate(0, -50%) rotate(90deg));
+			}
+			&.s1 {
+				bottom: 40%;
+			}
+			&.s2 {
+				bottom: 65%;
+			}
+			&.s3 {
+				bottom: 85%;
+			}
+		}
+		.info {
+			position: absolute;
+			left: 0;
+			bottom: changeUnit(85);
+			@include translate(-50%, 0);
+		}
+	}
+	.btns {
+		.btn {
+			display: block;
+		}
+	}
+}
+
+.section-3 {}
+
+
+.section-4 {
+	.features-info {
+		position: relative;
+		background-size: auto;
+		background-position: center;
+	}
+}
+
+.section-5 {
+	position: relative;
+	overflow: hidden;
+	.circles {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		div {
+			position: absolute;
+			&.c1 {
+				width: 40%;
+				left: 0;
+				top: 0;
+				@include translate(-40%, -30%);
+			}
+			&.c2 {
+				width: 20%;
+				left: 0%;
+				top: 0%;
+				@include translate(100%, 100%);
+			}
+			&.c3 {
+				width: 45%;
+				right: 0;
+				top: 0;
+				@include translate(25%, -50%);
+			}
+			&.c4 {
+				width: 15%;
+				right: 0;
+				top: 30%;
+				@include translate(15%, -50%);
+			}
+			&.c5 {
+				width: 35%;
+				left: 0;
+				bottom: 5%;
+				@include translate(-10%, 50%);
+			}
+			&.c6 {
+				width: 20%;
+				right: 0;
+				bottom: 0;
+				@include translate(50%, 50%);
+			}
+			i {
+				display: block;
+				padding-top: 100%;
+				border-radius: 50%;
+				@include opacity(0.15);
+			}
+		}
+	}
+}
+
+.section-6 {
+	.time-slide {
+		position: relative;
+		.line-box2 {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 1px;
+			@include linearGradient(top, $color-0097FF, $color-B240FF);
+		}
+		&:before {
+			@include opacity(0);
+			content: '';
+			width: 1px;
+			@include linearGradient(top, $color-0097FF, $color-B240FF);
+		}
+		&.prev,
+		&.next {
+			&:before {
+				height: changeUnit(205);
+			}
+			.btn {
+				top: changeUnit(205);
+			}
+		}
+		&.prev-value,
+		&.next-value {
+			&:before {
+				height: changeUnit(280);
+			}
+			.btn {
+				top: changeUnit(280);
+			}
+		}
+		&.cur-value {
+			&:before {
+				height: changeUnit(220);
+			}
+			.btn {
+				top: changeUnit(220);
+			}
+		}
+		.btn {
+			position: absolute;
+			left: 0;
+			top: 0;
+			@include translate(-50%, 0);
+		}
+	}
+	.cur-value {
+		.value-txt {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include translate(-50%, -50%);
+		}
+	}
+}
+
+
+.team {
+	.team-item {
+		@at-root {
+			.no-touch &:hover {
+				background-color: $color-894CEE;
+			}
+		}
+	}
+	.team-pic {
+		width: changeUnit(150);
+		height: changeUnit(150);
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+}
+
+
+
+.break {
+	.gcol-1 {
+		position: relative;
+		.line-arrow {
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background-color: rgba($color-7652E6, 0.3);
+			&.up {
+				top: changeUnit(0);
+			}
+			&.down {
+				bottom: changeUnit(90);
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				left: 100%;
+				top: 50%;
+				width: changeUnit(8);
+				height: changeUnit(7);
+				background-image: url(images/icon-5.png);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				@include translate(0, -50%);
+			}
+		}
+	}
+}
+
+
+.particles {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#skrollr-body {
+	height: 100%;
+	overflow: hidden;
+};@charset "utf-8";
+// 主体

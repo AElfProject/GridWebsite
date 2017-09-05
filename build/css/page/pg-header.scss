@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+.header {
+	position: fixed;
+	top: changeUnit(38);
+	left: 0;
+	right: 0;
+	z-index: 9;
+	.logo {
+
+	}
+	.menu-btn {
+		position: absolute;
+		top: 50%;
+		right: changeUnit($space);
+		@include translate(0, -50%);
+	}
+}
+
+.menu-btn {
+	height: changeUnit(30);
+	line-height: changeUnit(30);
+	cursor: pointer;
+	@at-root {
+		.no-touch &:hover,
+		&.active {
+			.menu-icon {
+				span {
+					@include rotate(90deg);
+				}
+			}
+		}
+	}
+	.menu-name {
+		float: left;
+		padding-right: changeUnit(15);
+	}
+	.menu-icon {
+		position: relative;
+		float: right;
+		height: inherit;
+		width: changeUnit(16);
+		span {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: block;
+			overflow: hidden;
+			@include transition(all 0.3s linear);
+		}
+		i {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 1px;
+			background-color: $color-white;
+			&:nth-child(1) {
+				left: 0;
+			}
+			&:nth-child(2) {
+				left: 50%;
+			}
+			&:nth-child(3) {
+				right: 0;
+			}
+		}
+	}
+}

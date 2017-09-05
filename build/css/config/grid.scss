@@ -1,0 +1,76 @@
+@charset "utf-8";
+%gPdH {
+	padding-left: changeUnit($gSpace);
+	padding-right: changeUnit($gSpace);
+}
+%gPdV {
+	padding-top: changeUnit($gSpace);
+	padding-bottom: changeUnit($gSpace);
+}
+%gMg-H {
+	margin-left: changeUnit(-$gSpace);
+	margin-right: changeUnit(-$gSpace);
+}
+%gMg-V {
+	margin-top: changeUnit(-$gSpace);
+	margin-bottom: changeUnit(-$gSpace);
+}
+@mixin grid($name){
+	@if ($name != false) {
+		@for $value from 0 through $gColumns {
+			.gcol-#{$name}-#{$value} {
+				float: left;
+				width: $value / $gColumns * 100%;
+			}
+			.gcol-#{$name}-ol-#{$value} {
+				margin-left: $value / $gColumns * 100%;
+			}
+			.gcol-#{$name}-or-#{$value} {
+				margin-right: $value / $gColumns * 100%;
+			}
+		}
+	}
+	@else {
+		@for $value from 0 through $gColumns {
+			.gcol-#{$value} {
+				float: left;
+				width: $value / $gColumns * 100%;
+			}
+			.gcol-ol-#{$value} {
+				margin-left: $value / $gColumns * 100%;
+			}
+			.gcol-or-#{$value} {
+				margin-right: $value / $gColumns * 100%;
+			}
+		}
+	}
+}
+@mixin gridCommon(){
+	.grow {
+		@extend %gMg-H;
+	}
+	.growVertical {
+		@extend %gMg-V;
+	}
+	@for $value from 0 through $gColumns {
+		.gcol-tn-#{$value},
+		.gcol-sm-#{$value},
+		.gcol-md-#{$value},
+		.gcol-lg-#{$value},
+		.gcol-gt-#{$value},
+		.gcol-#{$value} {
+			position: relative;
+			@extend %gPdH;
+		}
+		.grow-vertical {
+			.gcol-tn-#{$value},
+			.gcol-sm-#{$value},
+			.gcol-md-#{$value},
+			.gcol-lg-#{$value},
+			.gcol-gt-#{$value},
+			.gcol-#{$value} {
+				@extend %gPdV;
+			}
+		}
+	}
+}

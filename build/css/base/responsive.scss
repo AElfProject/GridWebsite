@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+.wrapper {
+	width: changeUnit($rp);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: changeUnit($space);
+	padding-right: changeUnit($space);
+}
+.show { display: block; }
+.hidden { display: none; }
+
+@include screen(0px, $bp-gt-max) {
+	.gt-hidden {
+		display: none;
+	}
+	.gt-show {
+		display: block;
+	}
+	.wrapper {
+		width: changeUnit($rp-gt);
+	}
+}
+@include screen(0px, $bp-lg-max) {
+	.lg-hidden {
+		display: none;
+	}
+	.lg-show {
+		display: block;
+	}
+	.wrapper {
+		width: changeUnit($rp-lg);
+	}
+}
+@include screen(0px, $bp-md-max) {
+	.md-hidden {
+		display: none;
+	}
+	.md-show {
+		display: block;
+	}
+	.wrapper {
+		width: changeUnit($rp-md);
+		padding-left: changeUnit($md-space);
+		padding-right: changeUnit($md-space);
+	}
+}
+@include screen(0px, $bp-sm-max) {
+	.sm-hidden {
+		display: none;
+	}
+	.sm-show {
+		display: block;
+	}
+	.wrapper {
+		width: changeUnit($rp-sm);
+		padding-left: changeUnit($sm-space);
+		padding-right: changeUnit($sm-space);
+	}
+}
+@include screen(0px, $bp-tn-max) {
+	.tn-hidden {
+		display: none;
+	}
+	.tn-show {
+		display: block;
+	}
+	.wrapper {
+		width: changeUnit($rp-tn);
+		padding-left: changeUnit($tn-space);
+		padding-right: changeUnit($tn-space);
+	}
+}

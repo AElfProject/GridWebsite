@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.pop-toast-default {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 150px;
+	border-radius: 10px;
+	background-color: rgba(#000, 0.9);
+	color: #fff;
+	text-align: center;
+	padding: 30px 15px;
+	z-index: 999999;
+	@include translate(-50%, -50%);
+	&.no-body {
+		position: absolute;
+	}
+	i {
+		@include fontSize($fs30);
+	}
+	p {
+		@include fontSize($fs16);
+		padding-top: 10px;
+	}
+}

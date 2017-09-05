@@ -1,0 +1,114 @@
+@charset "utf-8";
+/**
+* 按钮默认设置
+**/
+
+.btn {
+	display        : inline-block;
+	text-align     : center;
+	text-decoration: none;
+	border         : none;
+	overflow       : hidden;
+	cursor         : pointer;
+	@include transition(all 0.6s $easing-1);
+}
+btn,
+input {
+	&.btn {
+		@include appearance;
+	}
+}
+
+
+/* 正方形 */
+.btn-square {
+	padding: 0 !important;
+}
+
+/* 圆形 */
+.btn-circle {
+	border-radius: 50%;
+	padding      : 0 !important;
+}
+
+/* 圆角 */
+.btn-rounded {
+	border-radius: changeUnit(4);
+}
+
+/* 大圆角 */
+.btn-rounded-lg {
+	border-radius: changeUnit(10);
+}
+
+/* 药丸 */
+.btn-pill {
+	border-radius: changeUnit(10000);
+}
+
+/* 圆形 */
+.btn-border,
+.btn-border-thick,
+.btn-border-thin {
+	border-style: solid;
+}
+
+/* 默认的 */
+.btn-border {
+	border-width: changeUnit($btn-border-width);
+}
+
+/* 细的 */
+.btn-border-thin {
+	border-width: changeUnit($btn-border-thin-width);
+}
+
+/* 粗的 */
+.btn-border-thick {
+	border-width: changeUnit($btn-border-thick-width);
+}
+
+
+/**
+* 3D按钮
+**/
+.btn-3d {
+	position: relative;
+	top     : 0;
+	@include boxShadow(0 changeUnit(7) 0 #bbbbbb, 0 changeUnit(8) changeUnit(3) rgba(0, 0, 0, 0.2));
+
+	&.active,
+	&:active {
+		top: changeUnit(5);
+		@include transition(all 0.15s);
+		@include boxShadow(0 changeUnit(2) 0 #bbbbbb, 0 changeUnit(3) changeUnit(3) rgba(0, 0, 0, 0.2));
+	}
+}
+
+
+/**
+* 至于颜色，只能自己后期项目自定义
+* 以下几个为默认的语义按钮
+**/
+.btn-primary {
+	@include createBtnStyle((#fff, #fff), ($color-primary, darken($color-primary, 3)), (darken($color-primary, 3), darken($color-primary, 5)));
+}
+.btn-success {
+	@include createBtnStyle((#fff, #fff), ($color-success, darken($color-success, 3)), (darken($color-success, 3), darken($color-success, 5)));
+}
+.btn-info {
+	@include createBtnStyle((#fff, #fff), ($color-info, darken($color-info, 3)), (darken($color-info, 3), darken($color-info, 3)));
+}
+.btn-warning {
+	@include createBtnStyle((#fff, #fff), ($color-warning, darken($color-warning, 3)), (darken($color-warning, 3), darken($color-warning, 5)));
+}
+.btn-danger {
+	@include createBtnStyle((#fff, #fff), ($color-danger, darken($color-danger, 3)), (darken($color-danger, 3), darken($color-danger, 5)));
+}
+
+
+@include createBtnSize(rp, $btn-rp-ht, $btn-rp-pd);
+@include createBtnSize(sm, $btn-sm-ht, $btn-sm-pd);
+@include createBtnSize(md, $btn-md-ht, $btn-md-pd);
+@include createBtnSize(lg, $btn-lg-ht, $btn-lg-pd);
+@include createBtnSize(gt, $btn-gt-ht, $btn-gt-pd);

@@ -1,0 +1,554 @@
+@charset "utf-8";
+
+/************************************************************************************************
+* 单位
+**/
+$unit : px !default;
+@function changeUnit($number){
+	@if(unit($number) != "") {
+		@return $number;
+	}
+	@else if($unit == rem){
+		@return ($number * 0.01) + $unit;
+	}
+	@else{
+		@return $number + $unit;
+	}
+}
+@function stripUnits($number){
+	@return $number / ($number * 0 + 1);
+}
+@mixin fontSize($FSARRAY, $multiple:1) {
+	 @each $name , $value in $FSARRAY{
+		@if $name == null {
+			font-size: changeUnit($value * $multiple);
+		}
+		@else {
+			 @media screen and (max-width: $name){
+				font-size: changeUnit($value * $multiple);
+			}
+		}
+	}
+}
+
+/************************************************************************************************
+* css3 2d 3d
+**/
+@mixin transition($transition...) {
+	-webkit-transition: $transition;
+	-moz-transition   : $transition;
+	-ms-transition    : $transition;
+	transition        : $transition;
+}
+@mixin transform($transform...) {
+	-webkit-transform: $transform;
+	-moz-transform   : $transform;
+	-ms-transform    : $transform;
+	transform        : $transform;
+}
+@mixin transformOrigin($x:center, $y:center) {
+	-webkit-transform-origin: $x $y;
+	-moz-transform-origin   : $x $y;
+	-ms-transform-origin    : $x $y;
+	transform-origin        : $x $y;
+}
+@mixin translate($x:50%, $y:50%) {
+	$value-x : if(unit($x) != "%", changeUnit($x), $x);
+	$value-y : if(unit($y) != "%", changeUnit($y), $y);
+	-webkit-transform: translate($value-x, $value-y);
+	-moz-transform   : translate($value-x, $value-y);
+	-ms-transform    : translate($value-x, $value-y);
+	transform        : translate($value-x, $value-y);
+}
+@mixin translate3d($x:50%, $y:50%, $z:50%) {
+	$value-x : if(unit($x) != "%", changeUnit($x), $x);
+	$value-y : if(unit($y) != "%", changeUnit($y), $y);
+	$value-z : if(unit($z) != "%", changeUnit($z), $z);
+	-webkit-transform: translate3d($value-x, $value-y, $value-z);
+	-moz-transform   : translate3d($value-x, $value-y, $value-z);
+	-ms-transform    : translate3d($value-x, $value-y, $value-z);
+	transform        : translate3d($value-x, $value-y, $value-z);
+}
+@mixin scale($x:1, $y:1) {
+	-webkit-transform: scale($x, $y);
+	-moz-transform   : scale($x, $y);
+	-ms-transform    : scale($x, $y);
+	transform        : scale($x, $y);
+}
+@mixin scale3d($x:1, $y:1, $z:1) {
+	-webkit-transform: scale($x, $y, $z);
+	-moz-transform   : scale($x, $y, $z);
+	-ms-transform    : scale($x, $y, $z);
+	transform        : scale($x, $y, $z);
+}
+@mixin rotate($value:0deg) {
+	-webkit-transform: rotate($value);
+	-moz-transform   : rotate($value);
+	-ms-transform    : rotate($value);
+	transform        : rotate($value);
+}
+@mixin rotateX($value:0deg) {
+	-webkit-transform: rotateX($value);
+	-moz-transform   : rotateX($value);
+	-ms-transform    : rotateX($value);
+	transform        : rotateX($value);
+}
+@mixin rotateY($value:0deg) {
+	-webkit-transform: rotateY($value);
+	-moz-transform   : rotateY($value);
+	-ms-transform    : rotateY($value);
+	transform        : rotateY($value);
+}
+@mixin rotateZ($value:0deg) {
+	-webkit-transform: rotateZ($value);
+	-moz-transform   : rotateZ($value);
+	-ms-transform    : rotateZ($value);
+	transform        : rotateZ($value);
+}
+@mixin skew($x:0, $y:0) {
+	-webkit-transform: skew($x, $y);
+	-moz-transform   : skew($x, $y);
+	-ms-transform    : skew($x, $y);
+	transform        : skew($x, $y);
+}
+@mixin delay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay   : $delay;
+	-ms-transition-delay    : $delay;
+	transition-delay        : $delay;
+}
+@mixin transformStyle($value:preserve-3d) {
+	-webkit-transform-style: $value;
+	-moz-transform-style   : $value;
+	-ms-transform-style    : $value;
+	transform-style        : $value;
+}
+@mixin perspective($value:800px) {
+	//Chrome 和 Safari 支持替代的 -webkit-perspective 属性。
+	-webkit-perspective: changeUnit($value);
+	-moz-perspective   : changeUnit($value);
+	-ms-perspective    : changeUnit($value);
+	perspective        : changeUnit($value);
+}
+@mixin perspectiveOrigin($x:50%, $y:50%) {
+	-webkit-perspective-origin: $x $y;
+	-moz-perspective-origin   : $x $y;
+	-ms-perspective-origin    : $x $y;
+	perspective-origin        : $x $y;
+}
+@mixin backfaceVisibility($value:hidden) {
+	-webkit-backface-visibility: $value;
+	-moz-backface-visibility   : $value;
+	-ms-backface-visibility    : $value;
+	backface-visibility        : $value;
+}
+/************************************************************************************************
+* 其他
+**/
+@mixin opacity($value) {
+	opacity: $value;
+	filter:alpha(opacity=$value*100);
+}
+@mixin textSizeAdjust($value:100%) {
+	-webkit-text-size-adjust: $value;
+	-moz-text-size-adjust   : $value;
+	-ms-text-size-adjust    : $value;
+	text-size-adjust        : $value;
+}
+/************************************************************************************************
+* 盒子 显示模式
+**/
+@mixin display($value:flex) {
+	display: -webkit-+$value;
+	display: -moz-+$value;
+	display: -ms-+$value;
+	display: -o-+$value;
+	display: $value;
+}
+@mixin flex($value:1) {
+	-webkit-flex: $value;
+	-moz-flex   : $value;
+	-ms-flex    : $value;
+	flex        : $value;
+}
+@mixin boxSizing($value:border-box) {
+	-webkit-box-sizing: $value;
+	-moz-box-sizing   : $value;
+	-ms-box-sizing    : $value;
+	box-sizing        : $value;
+}
+/************************************************************************************************
+* 文本溢出
+**/
+%ellipsis1 {
+   display           : -webkit-box;
+   -webkit-box-orient: vertical;
+}
+%ellipsis2 {
+	display    : block;
+	white-space: nowrap;
+}
+%ellipsis3 {
+	text-overflow   : ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow        : hidden;
+}
+@mixin ellipsis($clamp: 1) {
+	 @if $clamp > 1{
+		-webkit-line-clamp: $clamp;
+		@extend %ellipsis1;
+	}
+	@else {
+		@extend %ellipsis2;
+	}
+	@extend %ellipsis3;
+}
+/************************************************************************************************
+* 对齐方式
+**/
+// 容器属性 Begin
+@mixin flex-direction($value:row) {
+	// 属性可选值的范围为row(默认)沿水平主轴由左向右排列、row-reverse沿水平主轴由右向左排列、column沿垂直主轴右上到下和column-reverse。
+	// .box { flex-direction: row | row-reverse | column | column-reverse; }
+	-webkit-flex-direction: $value;
+	-moz-flex-direction   : $value;
+	-ms-flex-direction    : $value;
+	flex-direction        : $value;
+}
+@mixin flex-wrap($value:nowrap) {
+	// 属性可选值的范围为nowrap(默认)不换行、wrap换行（第一行在上方）和wrap-reverse（你懂的~）
+	// .box{ flex-wrap: nowrap | wrap | wrap-reverse; }
+	-webkit-flex-wrap: $value;
+	-moz-flex-wrap   : $value;
+	-ms-flex-wrap    : $value;
+	flex-wrap        : $value;
+}
+@mixin flex-flow($value) {
+	// 写法属性中，将上述两种方法的值用||连接即可
+	// .box { flex-flow: <flex-direction> || <flex-wrap>; }
+	-webkit-flex-flow: $value;
+	-moz-flex-flow   : $value;
+	-ms-flex-flow    : $value;
+	flex-flow        : $value;
+}
+@mixin align-items($value:center) {
+	// .box { align-items: flex-start | flex-end | center | baseline | stretch; }
+	-webkit-align-items: $value;
+	-moz-align-items   : $value;
+	-ms-align-items    : $value;
+	align-items        : $value;
+}
+@mixin align-content($value:center) {
+	// .box { align-content: flex-start | flex-end | center | space-between | space-around | stretch; }
+	-webkit-align-content: $value;
+	-moz-align-content   : $value;
+	-ms-align-content    : $value;
+	align-content        : $value;
+}
+@mixin justify-content($value:center) {
+	// .box { justify-content: flex-start | flex-end | center | space-between | space-around; }
+	-webkit-justify-content: $value;
+	-moz-justify-content   : $value;
+	-ms-justify-content    : $value;
+	justify-content        : $value;
+}
+// 容器属性 End
+// 项目属性 Begin
+@mixin order($value:0) {
+	// 项目的排列顺序。数值越小，排列越靠前，默认为0。
+	// order: <integer>;
+	-webkit-order: $value;
+	-moz-order   : $value;
+	-ms-order    : $value;
+	order        : $value;
+}
+@mixin flex-grow($value:0) {
+	// 项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+	// flex-grow: <number>; /* default 0 */
+	-webkit-flex-grow: $value;
+	-moz-flex-grow   : $value;
+	-ms-flex-grow    : $value;
+	flex-grow        : $value;
+}
+@mixin flex-shrink($value:1) {
+	// 项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+	// flex-shrink: <number>; /* default 1 */
+	-webkit-flex-shrink: $value;
+	-moz-flex-shrink   : $value;
+	-ms-flex-shrink    : $value;
+	flex-shrink        : $value;
+}
+@mixin flex-basis($value:auto) {
+	// 在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+	// flex-basis: <length> | auto; /* default auto */
+	-webkit-flex-basis: $value;
+	-moz-flex-basis   : $value;
+	-ms-flex-basis    : $value;
+	flex-basis        : $value;
+}
+@mixin flex($value...) {
+	// 是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+	// flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+	-webkit-flex: $value;
+	-moz-flex   : $value;
+	-ms-flex    : $value;
+	flex        : $value;
+}
+@mixin align-self($value:auto) {
+	// 允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+	// align-self: auto | flex-start | flex-end | center | baseline | stretch;
+	-webkit-align-self: $value;
+	-moz-align-self   : $value;
+	-ms-align-self    : $value;
+	align-self        : $value;
+}
+// 项目属性 End
+/************************************************************************************************
+* 渐变 阴影
+**/
+@mixin colors($sort: #fff, $value: #fff) {
+	.color-#{$sort} {
+		color: $value;
+	}
+
+	.bg-color-#{$sort} {
+		background-color: $value;
+	}
+}
+@mixin blur($px:4) {
+	-webkit-filter: blur($px + px);
+	-moz-filter: blur($px + px);
+	-ms-filter: blur($px + px);
+	filter: blur($px + px);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=$px, MakeShadow=false);
+}
+@mixin linearGradient($values...) {
+	background-image: -webkit-linear-gradient($values);
+	background-image: -moz-linear-gradient($values);
+	background-image: -ms-linear-gradient($values);
+	background-image: -o-linear-gradient($values);
+	background-image: linear-gradient($values);
+}
+@mixin repeatLinearGradient($values...) {
+	background-image: -webkit-repeating-linear-gradient($values);
+	background-image: -moz-repeating-linear-gradient($values);
+	background-image: -ms-repeating-linear-gradient($values);
+	background-image: -o-repeating-linear-gradient($values);
+	background-image: repeating-linear-gradient($values);
+}
+@mixin radialGradient($type:circle, $color...) {
+	background-image: -webkit-radial-gradient($type, $color);
+	background-image: -moz-radial-gradient($type, $color);
+	background-image: -ms-radial-gradient($type, $color);
+	background-image: -o-radial-gradient($type, $color);
+	background-image: radial-gradient($type, $color);
+}
+@mixin repeatRadialGradient($type:circle, $color...) {
+	background-image: -webkit-repeating-radial-gradient($type, $color);
+	background-image: -moz-repeating-radial-gradient($type, $color);
+	background-image: -ms-repeating-radial-gradient($type, $color);
+	background-image: -o-repeating-radial-gradient($type, $color);
+	background-image: repeating-radial-gradient($type, $color);
+}
+@mixin boxShadow($value...) {
+	-webkit-box-shadow: $value;
+	box-shadow        : $value;
+}
+@mixin textShadow($value...) {
+	-webkit-text-shadow: $value;
+	text-shadow        : $value;
+}
+@mixin noShaking(){
+	// 谷歌浏览器上移晃动
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+}
+/************************************************************************************************
+* 动画
+**/
+@mixin animation($args) {
+	-webkit-animation     : $args;
+	-moz--webkit-animation: $args;
+	-ms-animation         : $args;
+	animation             : $args;
+}
+@mixin animationPlayState($args) {
+	-webkit-animation-play-state     : $args;
+	-moz--webkit-animation-play-state: $args;
+	-ms-animation-play-state         : $args;
+	animation-play-state             : $args;
+}
+@mixin keyframes($aniName) {
+	 @-webkit-keyframes #{$aniName}{
+		@content;
+	}
+	@-moz-keyframes #{$aniName} {
+		 @content;
+	}
+	@-ms-keyframes #{$aniName} {
+		 @content;
+	}
+	@keyframes #{$aniName} {
+		 @content;
+	}
+}
+/************************************************************************************************
+* 表单
+**/
+@mixin appearance($value:none) {
+	-webkit-appearance: $value;
+	-moz-appearance   : $value;
+	-ms-appearance    : $value;
+	appearance        : $value;
+}
+@mixin placeholder() {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+@mixin placeholderColor($value:nth($color, 6)) {
+	&::-webkit-input-placeholder {
+		color: $value;
+	}
+	&::-moz-placeholder {
+		color: $value;
+	}
+	&:-ms-input-placeholder {
+		color: $value;
+	}
+}
+@mixin placeholderCenter($value:center) {
+	&::-webkit-input-placeholder {
+		text-align: $value;
+	}
+	&::-moz-placeholder {
+		text-align: $value;
+	}
+	&:-ms-input-placeholder {
+		text-align: $value;
+	}
+}
+/************************************************************************************************
+* 设置 背景，包括retina屏幕
+**/
+@mixin imgBgRetina($file-1x, $file-2x) {
+	background-image: url($file-1x);
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and ( min--moz-device-pixel-ratio: 2),
+		only screen and ( -o-min-device-pixel-ratio: 2/1),
+		only screen and ( min-device-pixel-ratio: 2),
+		only screen and ( min-resolution: 192dpi),
+		only screen and ( min-resolution: 2dppx) {
+			background-image: url($file-2x);
+		}
+}
+@mixin screen($res-min, $res-max) {
+	@media screen and ( min-width: $res-min ) and ( max-width: $res-max ){
+		@content;
+	}
+}
+
+%fl {
+	float: left;
+}
+
+%fr {
+	float: right;
+}
+
+%m-auto {
+	margin-left : auto;
+	margin-right: auto;
+}
+
+%no-width {
+	width: 0 !important;
+}
+
+%no-boxshadow {
+	box-shadow: none !important;
+}
+
+%no-height {
+	height: 0 !important;
+}
+
+%no-border {
+	border: none !important;
+}
+
+%no-bg {
+	background: none !important;
+}
+
+%no-bgc {
+	background-color: none !important;
+}
+
+%no-bgi {
+	background-image: none !important;
+}
+
+%no-pt {
+	padding-top: 0 !important;
+}
+
+%no-pr {
+	padding-right: 0 !important;
+}
+
+%no-pb {
+	padding-bottom: 0 !important;
+}
+
+%no-pl {
+	padding-left: 0 !important;
+}
+
+%no-mt {
+	margin-top: 0 !important;
+}
+
+%no-mr {
+	margin-right: 0 !important;
+}
+
+%no-mb {
+	margin-bottom: 0 !important;
+}
+
+%no-ml {
+	margin-left: 0 !important;
+}
+
+
+%clear {
+	display : block;
+	height  : 0;
+	overflow: hidden;
+	clear   : both;
+}
+
+%clearfix {
+	content: '\20';
+	display: block;
+	height : 0;
+	clear  : both;
+	*zoom  : 1;
+}
+
+%uppercase {
+	text-transform: uppercase;
+}
+%lowercase {
+	text-transform: lowercase;
+}
+%capitalize {
+	text-transform: capitalize;
+}

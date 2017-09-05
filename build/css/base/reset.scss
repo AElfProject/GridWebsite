@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+figure {
+	margin:0;
+	padding:0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size:100%; font-weight:normal;
+}
+a,
+label,
+input,
+button,
+select,
+textarea {
+	outline:none
+}
+body,
+button,
+input,
+select,
+textarea {
+	word-wrap: break-word;
+}
+textarea {
+	resize:none;
+}
+address,
+cite,
+dfn,
+em,
+var {
+	font-style:normal
+}
+ul,
+ol {
+	list-style:none;
+}
+fieldset,
+img {
+	border: 0;
+	vertical-align:bottom;
+}
+section,
+article,
+aside,
+header,
+footer,
+nav,
+dialog,
+figure{
+	display:block;
+}
+table{
+	width:100%;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+* {
+	@include boxSizing();
+}
+*:after,
+*:before {
+	display:block;
+}
+*:focus {
+	outline:none;
+}
+.clear {
+	@extend %clear;
+}
+.clearfix:after {
+	@extend %clearfix;
+}
+
+html {
+	@include textSizeAdjust();
+}
+body {
+	margin:0 auto;
+	-webkit-font-smoothing: antialiased; // 让文字变得更清晰
+}
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	display: inline-block;
+}

@@ -1,0 +1,39 @@
+@charset "utf-8";
+.gcontainer-full {
+	width: 100% !important;
+}
+.gcontainer {
+	width: $rp-tn;
+}
+@include gridCommon();
+@include grid(tn);
+@media screen and (min-width: $bp-tn-max){
+	.gcontainer {
+		width: $rp-sm;
+	}
+	@include grid(sm);
+}
+@media screen and (min-width: $bp-sm-max){
+	.gcontainer {
+		width: $rp-md;
+	}
+	@include grid(md);
+}
+@media screen and (min-width: $bp-md-max){
+	.gcontainer {
+		width: $rp-lg;
+	}
+	@include grid(lg);
+}
+@media screen and (min-width: $bp-lg-max){
+	.gcontainer {
+		width: $rp-gt;
+	}
+	@include grid(gt);
+}
+@media screen and (min-width: $bp-gt-max){
+	.gcontainer {
+		width: $rp;
+	}
+	@include grid(false);
+}

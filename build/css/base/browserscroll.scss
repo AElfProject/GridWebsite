@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* 谷歌 滚动条 */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: none;
+	background-color: $scrollBoxBg;
+}
+/*---滚动框背景样式--*/
+::-webkit-scrollbar-track-piece{
+	background: rgba($scrollBarBg, 0.5);
+	-webkit-border-radius: 0;
+
+}
+/*---滚动条大小--*/
+::-webkit-scrollbar {
+	width: 10px;
+	background: rgba($scrollBarBg, 0.7);
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+	background: rgba($scrollBarBg, 0.7);
+}
+
+/*---鼠标点击滚动条显示样式--*/
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active{
+	background: $scrollBarBg;
+	height: changeUnit(50);
+	-webkit-border-radius: 0;
+}
+
+
+/* IE 滚动条 */
+html,
+body {
+	/* 滚动框背景 */
+	scrollbar-track-color: $scrollBoxBg;
+	/* 滚动条背景 */
+	scrollbar-face-color: nth($scrollBarBg, 1);
+	/* 滚动条阴影 */
+	scrollbar-shadow-color: nth($scrollBarBg, 1);
+	/* 上下箭头颜色 */
+	scrollbar-arrow-color: nth($scrollBarBg, 1);
+
+	scrollbar-highlight-color: #c00;
+	scrollbar-3dlight-color: #c00;
+	scrollbar-darkshadow-color: #fff;
+}

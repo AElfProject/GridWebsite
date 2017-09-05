@@ -1,0 +1,210 @@
+@charset "utf-8"; /**
+* 颜色使用方法
+* hsl($hue,$saturation,$lightness)：通过色相（hue）、饱和度(saturation)和亮度（lightness）的值创建一个颜色；
+*
+* hsla($hue,$saturation,$lightness,$alpha)：通过色相（hue）、饱和度(saturation)、亮度（lightness）和透明（alpha）的值创建一个颜色；
+*
+* hue($color)：从一个颜色中获取色相（hue）值；
+*
+* saturation($color)：从一个颜色中获取饱和度（saturation）值；
+*
+* lightness($color)：从一个颜色中获取亮度（lightness）值；
+*
+* adjust-hue($color,$degrees)：通过改变一个颜色的色相值，创建一个新的颜色；
+*
+* lighten($color,$amount)：通过改变颜色的亮度值，让颜色变亮，创建一个新的颜色；
+*
+* darken($color,$amount)：通过改变颜色的亮度值，让颜色变暗，创建一个新的颜色；
+*
+* saturate($color,$amount)：通过改变颜色的饱和度值，让颜色更饱和，从而创建一个新的颜色
+*
+* desaturate($color,$amount)：通过改变颜色的饱和度值，让颜色更少的饱和，从而创建出一个新的颜色；
+*
+* grayscale($color)：将一个颜色变成灰色，相当于desaturate($color,100%);
+*
+* complement($color)：返回一个补充色，相当于adjust-hue($color,180deg);
+*
+* invert($color)：反回一个反相色，红、绿、蓝色值倒过来，而透明度不变。
+**/
+
+
+// 单位
+$unit : px;
+
+// 是否兼容 IE lt 9
+$lte9            : true !default;
+
+/************************************************************************************************
+* media 响应断点 以及 响应宽度
+* bp ==> breakpoint
+* rp ==> response
+* gt ==> giant
+* lg ==> large
+* md ==> middle
+* sm ==> small
+* tn ==> tiny
+* 节点的值要是px为单位
+**/
+$bp-gt-max       : 1780px;
+$rp-gt           : 100%;
+$bp-lg-max       : 1480px;
+$rp-lg           : 100%;
+$bp-md-max       : 1280px;
+$rp-md           : 100%;
+$bp-sm-max       : 1024px;
+$rp-sm           : 100%;
+$bp-tn-max       : 768px;
+$rp-tn           : 100%;
+
+$space        : 60;
+$gt-space        : 50;
+$lg-space        : 40;
+$md-space        : 30;
+$sm-space        : 30;
+$tn-space        : 25;
+$rp              : 100%;
+
+
+// 滚动条
+$scrollBoxBg: #cccccc;
+$scrollBarBg: #333333;
+
+
+// grid 栅格
+$gColumns: 8;
+$gSpace: 15;
+
+
+// easing 贝塞尔
+$easing-1: linear;
+$easing-2: ease-out;
+$easing-3: ease-in-out;
+$easing-4: cubic-bezier(0.93, 0.03, 0.3, 0.97);
+$easing-5: cubic-bezier(0.82, 0.09, 0, 1.42);
+
+
+// Button 按钮
+$btn-rp-ht: 24;
+$btn-rp-pd: 10;
+$btn-sm-ht: 30;
+$btn-sm-pd: 15;
+$btn-md-ht: 40;
+$btn-md-pd: 20;
+$btn-lg-ht: 50;
+$btn-lg-pd: 25;
+$btn-gt-ht: 60;
+$btn-gt-pd: 30;
+
+$btn-border-width: 2;
+$btn-border-thin-width: 1;
+$btn-border-thick-width: 4;
+
+
+// Font Size 文字大小
+$fs10: ( null : 10 );
+$fs11: ( null : 11 );
+$fs12: ( null : 12 );
+$fs13: ( null : 13 );
+$fs14: ( null : 14 );
+$fs15: ( null : 15 );
+$fs16: ( null : 16 );
+$fs18: ( null : 18,
+		$bp-md-max: 18 * 0.8 );
+$fs20: ( null : 20,
+		$bp-md-max: 20 * 0.8 );
+$fs24: ( null : 24,
+		$bp-md-max: 24 * 0.8 );
+$fs30: ( null : 30,
+		$bp-lg-max: 30 * 0.8,
+		$bp-md-max: 45 * 0.7 );
+$fs36: ( null : 36,
+		$bp-lg-max: 36 * 0.8,
+		$bp-md-max: 45 * 0.7 );
+$fs45: ( null : 45,
+		$bp-lg-max: 45 * 0.8,
+		$bp-md-max: 45 * 0.7,
+		$bp-sm-max: 45 * 0.6 );
+$fs48: ( null : 48,
+		$bp-lg-max: 48 * 0.8,
+		$bp-md-max: 48 * 0.7,
+		$bp-sm-max: 48 * 0.6 );
+$fs60: ( null : 60,
+		$bp-gt-max: 60 * 0.75,
+		$bp-lg-max: 60 * 0.6,
+		$bp-md-max: 60 * 0.55,
+		$bp-sm-max: 60 * 0.5,
+		$bp-tn-max: 60 * 0.45 );
+$fs72: ( null : 72,
+		$bp-gt-max: 70 * 0.75,
+		$bp-lg-max: 70 * 0.6,
+		$bp-md-max: 70 * 0.55,
+		$bp-sm-max: 72 * 0.5,
+		$bp-tn-max: 72 * 0.45 );
+$fs100: ( null : 100,
+		$bp-gt-max: 100 * 0.75,
+		$bp-lg-max: 100 * 0.6,
+		$bp-md-max: 100 * 0.5,
+		$bp-sm-max: 100 * 0.45,
+		$bp-tn-max: 100 * 0.4 );
+$fs115: ( null : 115,
+		$bp-gt-max: 115 * 0.75,
+		$bp-lg-max: 115 * 0.6,
+		$bp-md-max: 115 * 0.5,
+		$bp-sm-max: 115 * 0.45,
+		$bp-tn-max: 115 * 0.4 );
+
+
+// Font Family 字体
+$default-ff-arial: 'arial', SimSun, sans-serif, 'Microsoft Yahei', 'STHeiti Light';
+$default-ff-my   : 'Microsoft Yahei', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-timesNewRomanItalic   : 'TimesNewRomanItalic', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-centuryGothicBold   : 'CenturyGothicBold', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-helveticaNeueLTProLt   : 'HelveticaNeueLTProLt', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-DevilBreezeBold   : 'DevilBreezeBold', SimSun, sans-serif, 'arial', 'STHeiti Light';
+$ff-centurygothic   : 'centurygothic', SimSun, sans-serif, 'arial', 'STHeiti Light';
+
+$default-fs      : $fs14;
+$default-ff      : $default-ff-my;
+
+
+// 默认颜色值，不可删除改动
+$color           : #ffffff #000000 #333333 #666666 #999999 #cccccc !default;
+// 语义颜色 不可删除改动
+$color-primary   : #428bca !default;
+$color-success   : #5cb85c !default;
+$color-info      : #5bc0de !default;
+$color-warning   : #f0ad4e !default;
+$color-danger    : #d9534f !default; // 灰度颜色 不可删除改动
+$color-darker    : lighten(#000, 13.5%) !default; // #222
+$color-dark      : lighten(#000, 20%) !default; // #333
+$color-gray      : lighten(#000, 33.5%) !default; // #555
+$color-light     : lighten(#000, 46.7%) !default; // #777
+$color-lighter   : lighten(#000, 93.5%) !default; // #eee
+$color-white     : white !default;
+$color-black     : black !default;
+$color-yellow    : yellow !default;
+$color-red       : red !default;
+$color-blue      : blue !default;
+
+
+$body-bg: #fff;
+$body-color: #000;
+
+
+$color-0F9CFF: #0F9CFF;
+$color-8f5ff0: #8f5ff0;
+$color-999999: #999999;
+$color-9365F1: #9365F1;
+$color-B63EFF: #B63EFF;
+$color-0097FF: #0097FF;
+$color-B240FF: #B240FF;
+$color-894CEE: #894CEE;
+$color-7652E6: #7652E6;
+$color-8F5FF0: #8F5FF0;
+$color-5F38D7: #5F38D7;
+
+
+
+$border-color-1: rgba($color-white, 0.4);
+$border-color-2: rgba($color-white, 0.15);
+$border-color-3: rgba($color-black, 0.1);

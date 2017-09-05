@@ -1,0 +1,164 @@
+@charset "utf-8";
+/**
+* 网页的布局，间距，浮动，栅格化，宽，高
+* 默认设置，不可删除，不可改动
+**/
+// 批量生成
+@for $value from 1 to 10 {
+	@include class-width($value); // 宽
+};
+@for $value from 10 to 1001 {
+	@if $value % 5 == 0 {
+		@include class-width($value); // 宽
+	}
+};
+@for $value from 5 to 1001 {
+	@if $value % 5 == 0 {
+		@include class-space($value); // 边距
+	}
+};
+@for $value from 0 to 1001 {
+	@include class-height($value); // 高
+};
+@for $value from 0 to 101 {
+	@include class-lineHeight($value); // 行高
+};
+@for $value from 0 to 51 {
+	@for $value2 from 0 to 20 {
+		@include class-lineHeightOver($value, $value2); // 高+行高
+	}
+};
+@for $value from 1 to 101 {
+	@if $value % 5 == 0 {
+		.wp#{$value} {
+			width: $value * 1%;
+		}
+		.hp#{$value} {
+			height: $value * 1%;
+		}
+	}
+}
+// 对其
+@each $direction in c, l, r {
+	.ta-#{$direction} {
+		@if $direction == c {
+			text-align: center;
+		}
+		@if $direction == l {
+			text-align: left;
+		}
+		@if $direction == r {
+			text-align: right;
+		}
+	}
+}
+@each $direction in t, m, b {
+	.va-#{$direction} {
+		@if $direction == t {
+			vertical-align: top;
+		}
+		@if $direction == m {
+			vertical-align: middle;
+		}
+		@if $direction == b {
+			vertical-align: bottom;
+		}
+	}
+}
+// 文字间距
+@for $value from -50 to 200 {
+	.ls-#{$value} {
+		letter-spacing: changeUnit($value*0.1);
+	}
+}
+
+// 浮动
+.fl {
+	@extend %fl;
+}
+.fr {
+	@extend %fr;
+}
+.m-auto {
+	@extend %m-auto;
+}
+
+
+// 清除
+.no-width {
+	@extend %no-width;
+}
+.no-boxshadow {
+	@extend %no-boxshadow;
+}
+.no-height {
+	@extend %no-height;
+}
+.no-border {
+	@extend %no-border;
+}
+.no-bg {
+	@extend %no-bg;
+}
+.no-bgc {
+	@extend %no-bgc;
+}
+.no-bgi {
+	@extend %no-bgi;
+}
+.no-pt {
+	@extend %no-pt;
+}
+.no-pr {
+	@extend %no-pr;
+}
+.no-pb {
+	@extend %no-pb;
+}
+.no-pl {
+	@extend %no-pl;
+}
+.no-mt {
+	@extend %no-mt;
+}
+.no-mr {
+	@extend %no-mr;
+}
+.no-mb {
+	@extend %no-mb;
+}
+.no-ml {
+	@extend %no-ml;
+}
+
+
+
+// 大小写
+.uppercase {
+	@extend %uppercase;
+}
+.lowercase {
+	@extend %lowercase;
+}
+.capitalize {
+	@extend %capitalize;
+}
+
+
+
+// 圆角
+.radius-tn {
+	border-radius: changeUnit(3);
+}
+.radius-sm {
+	border-radius: changeUnit(5);
+}
+.radius-md {
+	border-radius: changeUnit(10);
+}
+.radius-lg {
+	border-radius: changeUnit(10000);
+}
+.radius-circle {
+	border-radius: 50%;
+}

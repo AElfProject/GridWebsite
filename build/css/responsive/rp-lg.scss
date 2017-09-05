@@ -1,0 +1,22 @@
+@charset "utf-8";
+@media screen and (max-width: $bp-lg-max){
+	.section-2 {
+		.charts {
+			.info {
+				width: 100%;
+				bottom: changeUnit(20);
+			}
+		}
+	}
+	.header {
+		top: 0;
+		padding-top: changeUnit(10);
+		padding-bottom: changeUnit(10);
+		.menu-btn {
+			right: changeUnit($lg-space);
+		}
+		&.active {
+			@include linearGradient(left, rgba($color-0F9CFF, 0.95), rgba($color-8f5ff0, 0.95));
+		}
+	}
+}

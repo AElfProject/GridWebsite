@@ -1,0 +1,286 @@
+@charset "utf-8";
+// 公共组件，重复利用次数达到两次及以上的
+
+.bg-img-parent {
+    position: relative;
+}
+.bg-img {
+    position: relative;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.default-select {
+    border: solid changeUnit(1) #fff;
+    padding-right: changeUnit(14);
+    background: #fff url("http://ourjs.github.io/static/2015/arrow.png") no-repeat right center;
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+.pagination-style-1 {
+    position: static;
+    text-align: center;
+    height: auto;
+    @include display();
+    @include justify-content(center);
+    .swiper-pagination-bullet {
+        float: left;
+        margin: 0 changeUnit(8);
+        width: changeUnit(15);
+        height: changeUnit(15);
+        background-color: #E8E8E8;
+        @include opacity(1);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #11274F;
+    }
+}
+
+
+.scroll-bd {
+    position: relative;
+    overflow: hidden;
+    padding-right: changeUnit(15);
+}
+
+
+.type-desc {
+    &.lh-14em {
+        li {
+            &:before {
+                top: 0.7em;
+            }
+        }
+    }
+    &.lh-16em {
+        li {
+            &:before {
+                top: 0.8em;
+            }
+        }
+    }
+    &.lh-18em {
+        li {
+            &:before {
+                top: 0.9em;
+            }
+        }
+    }
+    &.lh-20em {
+        li {
+            &:before {
+                top: 1em;
+            }
+        }
+    }
+    li {
+        position: relative;
+        padding-left: changeUnit(15);
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: changeUnit(6);
+            height: changeUnit(6);
+            background-color: $color-white;
+            border-radius: 50%;
+            @include translate(-50%, -50%)
+        }
+    }
+}
+
+
+.times-style-1 {
+    li {
+        position: relative;
+        float: left;
+        width: changeUnit(80);
+        height: changeUnit(85);
+        border: 1px solid $border-color-1;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: changeUnit(13);
+            height: changeUnit(4);
+            background-color: $color-white;
+            @include translate(-50%, 0);
+        }
+    }
+}
+
+
+
+.lines {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .wrapper,
+    .grow,
+    .gcol-1 {
+        height: 100%;
+    }
+    .gcol-1 {
+        position: relative;
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: $border-color-2;
+            margin-left: -0.5px;
+        }
+        &:before {
+            content: '';
+            left: 0;
+        }
+        &:last-child {
+            &:after {
+                content: '';
+                left: 100%;
+            }
+        }
+        .line-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .line-box2,
+        .line-box3 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: changeUnit(8);
+                height: changeUnit(8);
+                border-radius: 50%;
+                @include translate(-50%, 0);
+            }
+            .line-txt {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                @include transform(translate(-50%, 0) rotate(90deg));
+            }
+        }
+        .line-box2 {
+            @include linearGradient(top, $color-0097FF, $color-B240FF);
+            &:before {
+                background-color: $color-B240FF;
+            }
+        }
+        .line-box3 {
+            background-color: $color-white;
+            &:before {
+                background-color: $color-white;
+            }
+        }
+    }
+}
+.lines-1 {
+    .gcol-1 {
+        &:before,
+        &:after {
+            background-color: $border-color-2;
+        }
+    }
+}
+.lines-2 {
+    .gcol-1 {
+        &:before,
+        &:after {
+            background-color: $border-color-3;
+        }
+    }
+}
+
+
+
+.charts {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    .wrapper,
+    .grow,
+    .gcol-1 {
+        height: 100%;
+        position: relative;
+        .chart {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+
+
+.add-btn {
+    position: relative;
+    display: block;
+    width: changeUnit(22);
+    height: changeUnit(22);
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: changeUnit(5);
+        background-color: $color-white;
+        &:nth-child(1) {
+            @include translate(-50%, -50%);
+        }
+        &:nth-child(2) {
+            @include transform(translate(-50%, -50%) rotate(90deg));
+        }
+    }
+}
+.add-btn2 {
+    position: relative;
+    display: block;
+    width: changeUnit(18);
+    height: changeUnit(18);
+    i {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: changeUnit(2);
+        background-color: $color-white;
+        &:nth-child(1) {
+            @include translate(-50%, -50%);
+        }
+        &:nth-child(2) {
+            @include transform(translate(-50%, -50%) rotate(90deg));
+        }
+    }
+}
+
+
+.i-fr {
+    float: right;
+}
+.i-fl {
+    float: left;
+}
+
+
+.ul-1 {
+    padding-left: changeUnit(18);
+}

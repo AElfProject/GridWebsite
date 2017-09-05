@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+.ff-arial {
+	font-family: $default-ff-arial;
+}
+.ff-tnri {
+	font-family: $ff-timesNewRomanItalic;
+}
+.ff-cgb {
+	font-family: $ff-centuryGothicBold;
+}
+.ff-hnlt {
+	font-family: $ff-helveticaNeueLTProLt;
+}
+.ff-dbb {
+	font-family: $ff-DevilBreezeBold;
+}
+.ff-cg {
+	font-family: $ff-centurygothic;
+}
+
+.fs-10 {
+	@include fontSize($fs10);
+}
+.fs-11 {
+	@include fontSize($fs11);
+}
+.fs-12 {
+	@include fontSize($fs12);
+}
+.fs-13 {
+	@include fontSize($fs13);
+}
+.fs-14 {
+	@include fontSize($fs14);
+}
+.fs-15 {
+	@include fontSize($fs15);
+}
+.fs-16 {
+	@include fontSize($fs16);
+}
+.fs-18 {
+	@include fontSize($fs18);
+}
+.fs-20 {
+	@include fontSize($fs20);
+}
+.fs-24 {
+	@include fontSize($fs24);
+}
+.fs-30 {
+	@include fontSize($fs30);
+}
+.fs-36 {
+	@include fontSize($fs36);
+}
+.fs-45 {
+	@include fontSize($fs45);
+}
+.fs-48 {
+	@include fontSize($fs48);
+}
+.fs-60 {
+	@include fontSize($fs60);
+}
+.fs-72 {
+	@include fontSize($fs72);
+}
+.fs-100 {
+	@include fontSize($fs100);
+}
+.fs-115 {
+	@include fontSize($fs115);
+}

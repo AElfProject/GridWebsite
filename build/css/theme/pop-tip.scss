@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/************************************************************************************************
+* 提示框
+**/
+@mixin tipColor($color) {
+	background: $color;
+	&.tip-hover {
+		&:hover {
+			background: lighten($color, 6%);
+			@include transition(all 0.15s);
+		}
+	}
+	.tip-close-button {
+		&:hover {
+			background: darken($color, 6%);
+		}
+	}
+}
+
+.tip-box {
+	position: relative;
+	line-height: 1.6em;
+	color: nth($color, 1);
+	padding: changeUnit(15);
+	margin-bottom: changeUnit(5);
+	@include transition(all 0.3s);
+	strong {
+		margin-right: changeUnit(5);
+	}
+}
+.tip-hands {
+	cursor: pointer;
+}
+.tip-rounded {
+	border-radius: changeUnit(4);
+}
+.tip-rounded-large {
+	border-radius: changeUnit(1000);
+}
+.tip-close {
+	position: relative;
+	.tip-close-button {
+		position: absolute;
+		right: changeUnit(15);
+		top: 50%;
+		color: inherit;
+		background: none;
+		@include translate(0, -50%);
+	}
+}
+
+.tip-danger {
+	@include tipColor($color-danger);
+}
+.tip-warning {
+	@include tipColor($color-warning);
+}
+.tip-info {
+	@include tipColor($color-info);
+}
+.tip-success {
+	@include tipColor($color-success);
+}
+.tip-primary {
+	@include tipColor($color-primary);
+}

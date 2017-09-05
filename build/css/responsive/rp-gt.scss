@@ -1,0 +1,20 @@
+@charset "utf-8";
+//可跳出media
+//@at-root (without: all) {
+//	*****
+//}
+
+@media screen and (max-width: $bp-gt-max){
+	.section-2 {
+		.charts {
+			.info {
+				bottom: changeUnit(20);
+			}
+		}
+	}
+	.header {
+		.menu-btn {
+			right: changeUnit($gt-space);
+		}
+	}
+}
